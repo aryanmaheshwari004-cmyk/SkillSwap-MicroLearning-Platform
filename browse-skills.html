@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Mentors — Skill Swap</title>
+  <meta name="description" content="Discover skilled mentors and find the perfect skill exchange partner. Filter by category, experience level, and proficiency.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/browse-skills.css">
+</head>
+<body class="browse-body">
+
+  <!-- Background atmosphere -->
+  <div class="browse-orb browse-orb-1"></div>
+  <div class="browse-orb browse-orb-2"></div>
+  <div class="browse-grid-overlay"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-browse" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link navbar-link-active">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO / SEARCH HEADER
+       ============================================================ -->
+  <section class="browse-hero">
+    <div class="container browse-hero-inner">
+      <div class="browse-hero-copy">
+        <div class="browse-eyebrow">
+          <span class="browse-eyebrow-dot"></span>
+          <span>Mentor Marketplace</span>
+        </div>
+        <h1 class="browse-hero-headline">Find Your <span class="browse-headline-accent">Perfect Mentor</span></h1>
+        <p class="browse-hero-sub">Connect with skilled individuals ready to share their expertise and grow together.</p>
+      </div>
+
+      <!-- Premium search bar -->
+      <form class="browse-search-shell" id="browse-search-form" role="search" aria-label="Search mentors">
+        <div class="browse-search-inner">
+          <div class="browse-search-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <input
+            type="text"
+            id="browse-search-input"
+            class="browse-search-input"
+            placeholder="Search skills, e.g. &quot;Python&quot;, &quot;Spanish&quot;, &quot;Figma&quot;…"
+            autocomplete="off"
+            spellcheck="false"
+          >
+          <div class="browse-search-divider"></div>
+          <button type="submit" class="browse-search-btn" id="browse-search-submit-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Search
+          </button>
+        </div>
+
+        <!-- Quick category pills under search -->
+        <div class="browse-quick-cats" id="browse-quick-cats">
+          <span class="browse-quick-label">Popular:</span>
+          <button type="button" class="browse-quick-cat-pill" data-cat-id="1">Programming</button>
+          <button type="button" class="browse-quick-cat-pill" data-cat-id="2">Design</button>
+          <button type="button" class="browse-quick-cat-pill" data-cat-id="4">Languages</button>
+          <button type="button" class="browse-quick-cat-pill" data-cat-id="5">Music</button>
+          <button type="button" class="browse-quick-cat-pill" data-cat-id="6">Data &amp; Analytics</button>
+        </div>
+      </form>
+
+      <!-- Stats row -->
+      <div class="browse-hero-stats">
+        <div class="browse-hero-stat">
+          <span class="browse-hero-stat-num">500+</span>
+          <span class="browse-hero-stat-label">Active Mentors</span>
+        </div>
+        <div class="browse-hero-stat-divider"></div>
+        <div class="browse-hero-stat">
+          <span class="browse-hero-stat-num">50+</span>
+          <span class="browse-hero-stat-label">Skill Categories</span>
+        </div>
+        <div class="browse-hero-stat-divider"></div>
+        <div class="browse-hero-stat">
+          <span class="browse-hero-stat-num">4.8★</span>
+          <span class="browse-hero-stat-label">Avg. Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MAIN LAYOUT (sidebar + results)
+       ============================================================ -->
+  <main class="browse-main">
+    <div class="container browse-layout">
+
+      <!-- Mobile filters toggle -->
+      <button type="button" class="browse-mobile-filter-btn" id="browse-filters-toggle-btn" aria-expanded="false" aria-controls="browse-filters-panel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="4" x2="14" y2="4"/><line x1="10" y1="4" x2="3" y2="4"/><line x1="21" y1="12" x2="12" y2="12"/><line x1="8" y1="12" x2="3" y2="12"/><line x1="21" y1="20" x2="16" y2="20"/><line x1="12" y1="20" x2="3" y2="20"/><circle cx="12" cy="4" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="14" cy="20" r="2"/></svg>
+        Filters
+        <span class="browse-filter-count-badge hidden" id="browse-filter-count-badge">0</span>
+      </button>
+
+      <!-- ============================================================
+           FILTER SIDEBAR
+           ============================================================ -->
+      <aside class="browse-sidebar" id="browse-filters-panel" aria-label="Filter options">
+
+        <div class="browse-sidebar-header">
+          <div class="browse-sidebar-title-row">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+            <span>Filters</span>
+          </div>
+          <button type="button" class="browse-filters-clear-btn" id="browse-filters-clear-btn">Reset all</button>
+        </div>
+
+        <!-- Category -->
+        <div class="browse-filter-section">
+          <h3 class="browse-filter-section-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Category
+          </h3>
+          <div class="browse-filter-chips browse-filter-chip-row" id="filter-category-chips" data-filter="category" role="group" aria-label="Filter by category">
+            <button type="button" class="browse-filter-chip is-active" data-value="">All</button>
+          </div>
+        </div>
+
+        <!-- Experience level -->
+        <div class="browse-filter-section">
+          <h3 class="browse-filter-section-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Mentor Experience
+          </h3>
+          <div class="browse-filter-chips browse-filter-chip-row" data-filter="experience_level" role="group" aria-label="Filter by mentor experience">
+            <button type="button" class="browse-filter-chip is-active" data-value="">All levels</button>
+            <button type="button" class="browse-filter-chip" data-value="beginner">
+              <span class="browse-chip-dot browse-chip-dot--green"></span>Beginner
+            </button>
+            <button type="button" class="browse-filter-chip" data-value="intermediate">
+              <span class="browse-chip-dot browse-chip-dot--blue"></span>Intermediate
+            </button>
+            <button type="button" class="browse-filter-chip" data-value="expert">
+              <span class="browse-chip-dot browse-chip-dot--purple"></span>Expert
+            </button>
+          </div>
+        </div>
+
+        <!-- Skill proficiency -->
+        <div class="browse-filter-section">
+          <h3 class="browse-filter-section-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            Skill Proficiency
+          </h3>
+          <div class="browse-filter-chips browse-filter-chip-row" data-filter="proficiency" role="group" aria-label="Filter by skill proficiency">
+            <button type="button" class="browse-filter-chip is-active" data-value="">Any level</button>
+            <button type="button" class="browse-filter-chip" data-value="beginner">
+              <span class="browse-chip-dot browse-chip-dot--green"></span>Beginner
+            </button>
+            <button type="button" class="browse-filter-chip" data-value="intermediate">
+              <span class="browse-chip-dot browse-chip-dot--blue"></span>Intermediate
+            </button>
+            <button type="button" class="browse-filter-chip" data-value="expert">
+              <span class="browse-chip-dot browse-chip-dot--purple"></span>Expert
+            </button>
+          </div>
+        </div>
+
+        <!-- Rating Filter -->
+        <div class="browse-filter-section">
+          <h3 class="browse-filter-section-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Rating
+          </h3>
+          <div class="browse-filter-chips browse-filter-chip-row" data-filter="rating" role="group" aria-label="Filter by rating">
+            <button type="button" class="browse-filter-chip is-active" data-value="">Any rating</button>
+            <button type="button" class="browse-filter-chip" data-value="4.5">★ 4.5+</button>
+            <button type="button" class="browse-filter-chip" data-value="4.0">★ 4.0+</button>
+            <button type="button" class="browse-filter-chip" data-value="3.5">★ 3.5+</button>
+            <button type="button" class="browse-filter-chip" data-value="3.0">★ 3.0+</button>
+          </div>
+        </div>
+
+        <!-- Availability indicator -->
+        <div class="browse-filter-section">
+          <label class="browse-availability-banner" style="cursor: pointer; width: 100%;">
+            <input type="checkbox" id="filter-availability" style="width: 16px; height: 16px; accent-color: #4ade80; cursor: pointer; margin-right: 0.25rem;">
+            <span class="browse-avail-dot"></span>
+            <div>
+              <span class="browse-avail-title">Available now</span>
+              <span class="browse-avail-sub">Mentors with open slots</span>
+            </div>
+          </label>
+        </div>
+
+      </aside>
+
+      <!-- ============================================================
+           RESULTS PANEL
+           ============================================================ -->
+      <div class="browse-results">
+
+        <!-- Results toolbar -->
+        <div class="browse-results-bar">
+          <span class="browse-results-count" id="browse-results-count">
+            <span class="browse-count-skeleton"></span>
+          </span>
+          <div class="browse-sort-row">
+            <label for="browse-sort-select" class="browse-sort-label">Sort by</label>
+            <select id="browse-sort-select" class="browse-sort-select">
+              <option value="rating">Top rated</option>
+              <option value="sessions">Most sessions</option>
+              <option value="newest">Newest</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Card grid -->
+        <div class="mentor-card-grid" id="mentor-card-grid" role="list" aria-label="Mentor results">
+          <!-- Skeleton placeholders -->
+          <div class="mentor-card-skeleton" aria-hidden="true"></div>
+          <div class="mentor-card-skeleton" aria-hidden="true"></div>
+          <div class="mentor-card-skeleton" aria-hidden="true"></div>
+          <div class="mentor-card-skeleton" aria-hidden="true"></div>
+          <div class="mentor-card-skeleton" aria-hidden="true"></div>
+          <div class="mentor-card-skeleton" aria-hidden="true"></div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="browse-empty-state hidden" id="browse-empty-state" role="status">
+          <div class="browse-empty-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </div>
+          <h3>No mentors found</h3>
+          <p>Try different keywords or adjust your filters.</p>
+          <button type="button" class="browse-empty-reset-btn" id="browse-empty-reset-btn">Clear all filters</button>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="browse-pagination hidden" id="browse-pagination" aria-label="Results pagination"></nav>
+
+      </div><!-- /.browse-results -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="browse-footer">
+    <div class="container browse-footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm">Learn, teach &amp; grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container browse-footer-bottom">
+      <p class="text-sm">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/browse-skills.js"></script>
+</body>
+</html>

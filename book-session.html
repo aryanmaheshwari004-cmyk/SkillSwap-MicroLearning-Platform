@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session — Skill Swap</title>
+  <meta name="description" content="Confirm your session booking with your chosen mentor.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/book-session.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="booksession-main">
+    <div class="container booksession-wrap">
+
+      <div class="booksession-header">
+        <h1>Confirm your session</h1>
+        <p>Review the details below before sending your request.</p>
+      </div>
+
+      <div id="booksession-content">
+        <!-- ============================================================
+             SUMMARY CARD
+             ============================================================ -->
+        <section class="card booksession-summary-card" id="booksession-summary-card">
+          <div class="booksession-mentor-row">
+            <img src="assets/images/default-avatar.png" alt="Mentor photo" class="avatar avatar-md" id="booksession-mentor-photo">
+            <div>
+              <h4 id="booksession-mentor-name">Loading...</h4>
+              <span class="text-sm text-muted" id="booksession-skill-name"></span>
+            </div>
+          </div>
+
+          <div class="booksession-detail-row">
+            <span class="booksession-detail-label">Date</span>
+            <span class="booksession-detail-value" id="booksession-date">—</span>
+          </div>
+          <div class="booksession-detail-row">
+            <span class="booksession-detail-label">Time</span>
+            <span class="booksession-detail-value" id="booksession-time">—</span>
+          </div>
+        </section>
+
+        <!-- ============================================================
+             NOTES FORM
+             ============================================================ -->
+        <section class="card booksession-form-card">
+          <h3>Anything you'd like the mentor to know?</h3>
+
+          <div class="auth-alert" id="booksession-alert" role="alert"></div>
+
+          <form id="booksession-form" novalidate>
+            <div class="form-group">
+              <label for="booksession-notes" class="form-label">Notes (optional)</label>
+              <textarea id="booksession-notes" class="form-textarea" maxlength="1000" placeholder="e.g. I'd like to focus on portfolio feedback."></textarea>
+              <span class="form-error"></span>
+            </div>
+
+            <div class="booksession-submit-row">
+              <button type="submit" class="btn btn-primary btn-block" id="booksession-submit-btn">Send request</button>
+              <a href="javascript:history.back()" class="btn btn-ghost">Cancel</a>
+            </div>
+          </form>
+        </section>
+      </div>
+
+      <!-- ============================================================
+           UNAVAILABLE STATE (shown if slot was taken/expired)
+           ============================================================ -->
+      <div class="card booksession-unavailable hidden" id="booksession-unavailable-state">
+        <h3>This slot is no longer available</h3>
+        <p>Someone may have booked it first, or it has passed. Please choose another time.</p>
+        <a href="browse-skills.html" class="btn btn-primary">Browse mentors</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach & grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/book-session.js"></script>
+</body>
+</html>

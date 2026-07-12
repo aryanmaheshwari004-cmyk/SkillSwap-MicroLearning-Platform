@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skill Detail — Skill Swap</title>
+  <meta name="description" content="View mentor details, reviews, and available session slots.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/skill-detail.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="browse-body">
+
+  <!-- Atmospheric background orbs -->
+  <div class="detail-orb detail-orb-1"></div>
+  <div class="detail-orb detail-orb-2"></div>
+  <div class="detail-orb detail-orb-3"></div>
+  <div class="detail-grid-overlay"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="detail-main">
+    <div class="container">
+
+      <!-- Breadcrumb Navigation -->
+      <nav class="detail-breadcrumb">
+        <a href="browse-skills.html">Browse Skills</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="breadcrumb-chevron"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        <span id="breadcrumb-skill-name">Loading...</span>
+      </nav>
+
+      <!-- Redesigned Hero Section (full-width header card) -->
+      <div class="detail-hero-section">
+        <div class="detail-hero-cover">
+          <div class="detail-hero-gradient"></div>
+          <div class="detail-hero-pattern"></div>
+        </div>
+        <div class="detail-hero-card">
+          <div class="detail-hero-badge-row">
+            <span class="badge-custom badge-skill-cat" id="detail-category-badge">—</span>
+            <span class="badge-custom badge-skill-prof" id="detail-proficiency-badge">—</span>
+            <span class="badge-custom badge-trust">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Verified Mentor
+            </span>
+          </div>
+          <h1 class="detail-skill-title" id="detail-skill-title">Loading...</h1>
+          <p class="detail-hero-sub">Elevate your capabilities through dedicated 1-on-1 collaborative coaching.</p>
+        </div>
+      </div>
+
+      <div class="detail-layout">
+
+        <!-- ============================================================
+             MAIN CONTENT (LEFT COLUMN)
+             ============================================================ -->
+        <div class="detail-content">
+          
+          <!-- About this Skill -->
+          <section class="detail-glass-card detail-section">
+            <div class="detail-card-header">
+              <div class="detail-card-title-group">
+                <div class="detail-card-icon detail-card-icon--purple">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="detail-card-title">About this skill</h3>
+                  <p class="detail-card-subtitle">Topic summary and mentorship scope</p>
+                </div>
+              </div>
+            </div>
+            <p class="detail-description-text" id="detail-description-text">Loading description...</p>
+          </section>
+
+          <!-- Large Profile Card (About the mentor) -->
+          <section class="detail-glass-card detail-section">
+            <div class="detail-card-header">
+              <div class="detail-card-title-group">
+                <div class="detail-card-icon detail-card-icon--blue">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div>
+                  <h3 class="detail-card-title">About the mentor</h3>
+                  <p class="detail-card-subtitle">Instructor profile & credentials</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-mentor-profile-layout">
+              <div class="detail-mentor-avatar-wrap">
+                <img src="assets/images/default-avatar.png" alt="Mentor photo" class="detail-mentor-avatar" id="detail-mentor-photo">
+                <div class="detail-mentor-status-dot" title="Active Mentor"></div>
+              </div>
+              <div class="detail-mentor-info">
+                <div class="detail-mentor-name-row">
+                  <h4 id="detail-mentor-name">Loading...</h4>
+                  <span class="badge-custom-small badge-verified">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    Verified
+                  </span>
+                </div>
+                <div class="detail-mentor-rating-row">
+                  <span class="star-rating" id="detail-mentor-stars"></span>
+                  <span class="detail-mentor-review-text" id="detail-mentor-review-count"></span>
+                </div>
+                <p class="detail-mentor-bio" id="detail-mentor-bio">Loading bio...</p>
+              </div>
+            </div>
+
+            <div class="detail-other-skills-section">
+              <h4 class="detail-section-sub-title">Other Skills Offered</h4>
+              <div class="detail-mentor-other-skills" id="detail-mentor-other-skills"></div>
+            </div>
+          </section>
+
+          <!-- Statistics Panel -->
+          <section class="detail-glass-card detail-section">
+            <div class="detail-card-header">
+              <div class="detail-card-title-group">
+                <div class="detail-card-icon detail-card-icon--green">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+                </div>
+                <div>
+                  <h3 class="detail-card-title">Performance Metrics</h3>
+                  <p class="detail-card-subtitle">Verified platform statistics</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="detail-stats-grid">
+              <div class="detail-stat-item">
+                <div class="detail-stat-value">50+</div>
+                <div class="detail-stat-label">Sessions Guided</div>
+              </div>
+              <div class="detail-stat-divider"></div>
+              <div class="detail-stat-item">
+                <div class="detail-stat-value">&lt; 2 hrs</div>
+                <div class="detail-stat-label">Response Time</div>
+              </div>
+              <div class="detail-stat-divider"></div>
+              <div class="detail-stat-item">
+                <div class="detail-stat-value">98%</div>
+                <div class="detail-stat-label">Completion Rate</div>
+              </div>
+              <div class="detail-stat-divider"></div>
+              <div class="detail-stat-item">
+                <div class="detail-stat-value">1-on-1</div>
+                <div class="detail-stat-label">Interaction</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Trust Badges Section -->
+          <div class="detail-trust-badges-container">
+            <div class="detail-trust-badge">
+              <div class="detail-trust-icon icon-purple">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="detail-trust-info">
+                <div class="detail-trust-title">SkillSwap Shield</div>
+                <div class="detail-trust-desc">Protected messaging & feedback</div>
+              </div>
+            </div>
+            <div class="detail-trust-badge">
+              <div class="detail-trust-icon icon-blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div class="detail-trust-info">
+                <div class="detail-trust-title">Live Interactions</div>
+                <div class="detail-trust-desc">Realtime peer-to-peer screen share</div>
+              </div>
+            </div>
+            <div class="detail-trust-badge">
+              <div class="detail-trust-icon icon-green">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div class="detail-trust-info">
+                <div class="detail-trust-title">Flexible Schedule</div>
+                <div class="detail-trust-desc">Easy slots request & rescheduling</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews Section -->
+          <section class="detail-glass-card detail-section" id="detail-reviews-section">
+            <div class="detail-card-header">
+              <div class="detail-card-title-group">
+                <div class="detail-card-icon detail-card-icon--amber">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <div>
+                  <h3 class="detail-card-title">Reviews</h3>
+                  <p class="detail-card-subtitle">Verified feedback from community learners</p>
+                </div>
+              </div>
+            </div>
+            <div id="detail-reviews-list">
+              <p class="text-sm text-muted">Loading reviews...</p>
+            </div>
+          </section>
+        </div>
+
+        <!-- ============================================================
+             BOOKING SIDEBAR (RIGHT COLUMN)
+             ============================================================ -->
+        <aside class="detail-booking-sidebar">
+          <div class="detail-glass-card detail-booking-card">
+            <div class="detail-booking-header">
+              <div class="detail-booking-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <div>
+                <h3 class="detail-booking-title">Available time slots</h3>
+                <p class="detail-booking-subtitle">Select a slot to request session</p>
+              </div>
+            </div>
+
+            <div class="detail-slot-list" id="detail-slot-list">
+              <p class="text-sm text-muted">Loading availability...</p>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block" id="detail-book-btn" disabled>
+              Select a slot to book
+            </button>
+
+            <!-- Sidebar Trust Points -->
+            <div class="detail-booking-trust-list">
+              <div class="detail-booking-trust-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Free scheduling & chat details</span>
+              </div>
+              <div class="detail-booking-trust-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <span>Peer-approved connection</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach & grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/skill-detail.js"></script>
+</body>
+</html>

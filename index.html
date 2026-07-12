@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillSwap — Learn Anything. Teach Everything.</title>
+  <meta name="description" content="Connect with people who can teach the skills you need and learn through real one-on-one sessions. Join 2500+ learners on SkillSwap.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/landing.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="landing-body">
+
+  <!-- ============================================================
+       NAVBAR — Glassmorphism on hero scroll
+       ============================================================ -->
+  <header class="navbar navbar-landing" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="SkillSwap logo" class="navbar-logo-img">
+        <span>SkillSwap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="#how-it-works" class="navbar-link">How it Works</a>
+        <a href="#categories" class="navbar-link">Categories</a>
+        <a href="#testimonials" class="navbar-link">Reviews</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started free</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started free</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============================================================
+         HERO — Full-screen gradient + floating glass cards
+         ============================================================ -->
+    <section class="hero-landing" id="hero">
+      <!-- Animated background orbs -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+      <!-- Grid overlay -->
+      <div class="hero-grid-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-content">
+        <!-- Left: copy -->
+        <div class="hero-copy-landing">
+          <span class="hero-eyebrow">
+            <span class="hero-eyebrow-dot"></span>
+            Peer-to-peer mentorship · Live now
+          </span>
+
+          <h1 class="hero-headline">
+            Learn Anything.<br>
+            <span class="hero-headline-accent">Teach Everything.</span>
+          </h1>
+
+          <p class="hero-desc">
+            Connect with people who can teach the skills you need and learn through real one-on-one sessions.
+          </p>
+
+          <div class="hero-cta-row">
+            <a href="browse-skills.html" class="btn btn-hero-primary" id="hero-start-learning">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              Start Learning
+            </a>
+            <a href="register.html" class="btn btn-hero-secondary" id="hero-become-mentor">
+              Become a Mentor
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+          </div>
+
+          <div class="hero-social-proof">
+            <div class="hero-avatars" aria-hidden="true">
+              <div class="hero-avatar-circle" style="background: linear-gradient(135deg,#a78bfa,#7c3aed)">P</div>
+              <div class="hero-avatar-circle" style="background: linear-gradient(135deg,#60a5fa,#2563eb)">A</div>
+              <div class="hero-avatar-circle" style="background: linear-gradient(135deg,#34d399,#059669)">M</div>
+              <div class="hero-avatar-circle" style="background: linear-gradient(135deg,#f472b6,#db2777)">S</div>
+            </div>
+            <span class="hero-proof-text">Joined by <strong>2,500+</strong> learners this month</span>
+          </div>
+        </div>
+
+        <!-- Right: floating mentor & learner cards -->
+        <div class="hero-cards-area" aria-hidden="true">
+
+          <!-- Floating card: Mentor -->
+          <div class="floating-card floating-card-mentor">
+            <!-- Glow halo behind avatar -->
+            <div class="fcard-avatar-halo mentor-halo"></div>
+
+            <div class="fcard-header">
+              <div class="fcard-avatar-wrap">
+                <div class="fcard-avatar mentor-avatar">M</div>
+                <span class="fcard-avatar-status fcard-avatar-status--online"></span>
+              </div>
+              <div class="fcard-info">
+                <div class="fcard-name">Marcus Chen</div>
+                <div class="fcard-role">Senior UX Designer · 8 yrs exp</div>
+              </div>
+              <div class="fcard-badge fcard-badge-mentor">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                PRO
+              </div>
+            </div>
+
+            <div class="fcard-divider"></div>
+
+            <div class="fcard-skills">
+              <span class="fcard-skill-tag fcard-skill-tag--purple">UI Design</span>
+              <span class="fcard-skill-tag fcard-skill-tag--blue">Figma</span>
+              <span class="fcard-skill-tag fcard-skill-tag--pink">UX Research</span>
+              <span class="fcard-skill-tag fcard-skill-tag--teal">Prototyping</span>
+            </div>
+
+            <div class="fcard-rating-row">
+              <div class="fcard-stars-wrap">
+                <span class="fcard-stars">★★★★★</span>
+                <span class="fcard-rating-num">4.9</span>
+              </div>
+              <span class="fcard-sep">·</span>
+              <span class="fcard-reviews">128 reviews</span>
+            </div>
+
+            <div class="fcard-stats-row">
+              <div class="fcard-stat">
+                <span class="fcard-stat-num">247</span>
+                <span class="fcard-stat-label">Sessions</span>
+              </div>
+              <div class="fcard-stat-divider"></div>
+              <div class="fcard-stat">
+                <span class="fcard-stat-num">98%</span>
+                <span class="fcard-stat-label">Completion</span>
+              </div>
+              <div class="fcard-stat-divider"></div>
+              <div class="fcard-stat">
+                <span class="fcard-stat-num">$85</span>
+                <span class="fcard-stat-label">/ session</span>
+              </div>
+            </div>
+
+            <div class="fcard-available">
+              <span class="fcard-dot"></span>
+              Available today · Next slot 3 PM
+            </div>
+          </div>
+
+          <!-- Floating card: Learner -->
+          <div class="floating-card floating-card-learner">
+            <div class="fcard-avatar-halo learner-halo"></div>
+
+            <div class="fcard-header">
+              <div class="fcard-avatar-wrap">
+                <div class="fcard-avatar learner-avatar">S</div>
+                <span class="fcard-avatar-status fcard-avatar-status--learning"></span>
+              </div>
+              <div class="fcard-info">
+                <div class="fcard-name">Sophia Patel</div>
+                <div class="fcard-role">Learning Python · Week 3</div>
+              </div>
+              <div class="fcard-badge fcard-badge-learner">Active</div>
+            </div>
+
+            <div class="fcard-divider"></div>
+
+            <div class="fcard-session-live">
+              <span class="fcard-live-dot"></span>
+              <span class="fcard-live-label">Live session in progress</span>
+            </div>
+
+            <div class="fcard-progress-wrap">
+              <div class="fcard-progress-header">
+                <span class="fcard-progress-label">Course Progress</span>
+                <span class="fcard-progress-pct">68%</span>
+              </div>
+              <div class="fcard-progress-bar">
+                <div class="fcard-progress-fill"></div>
+              </div>
+            </div>
+
+            <div class="fcard-skill-goals">
+              <span class="fcard-goal-label">Learning goals:</span>
+              <div class="fcard-goals-list">
+                <span class="fcard-goal-tag fcard-goal-done">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                  Variables
+                </span>
+                <span class="fcard-goal-tag fcard-goal-done">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+                  Functions
+                </span>
+                <span class="fcard-goal-tag fcard-goal-active">OOP</span>
+                <span class="fcard-goal-tag">APIs</span>
+              </div>
+            </div>
+
+            <div class="fcard-session-meta">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Next session: Today at 5 PM with Marcus
+            </div>
+          </div>
+
+          <!-- Notification: Session Completed -->
+          <div class="hero-notif hero-notif--success">
+            <div class="hero-notif-icon-wrap hero-notif-icon-wrap--green">🎉</div>
+            <div class="hero-notif-body">
+              <div class="hero-notif-title">Session Completed!</div>
+              <div class="hero-notif-sub">Alex just finished React basics</div>
+            </div>
+            <div class="hero-notif-time">2m ago</div>
+          </div>
+
+          <!-- Notification: New Match -->
+          <div class="hero-notif hero-notif--match">
+            <div class="hero-notif-icon-wrap hero-notif-icon-wrap--purple">⚡</div>
+            <div class="hero-notif-body">
+              <div class="hero-notif-title">New Match Found!</div>
+              <div class="hero-notif-sub">Priya matched with a Figma mentor</div>
+            </div>
+            <div class="hero-notif-time">5m ago</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <div class="hero-scroll-line"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         STATS — Social proof numbers with count-up
+         ============================================================ -->
+    <section class="stats-section" id="stats-section">
+      <div class="container">
+
+        <div class="stats-header">
+          <p class="stats-eyebrow">Trusted by thousands of learners & mentors worldwide</p>
+        </div>
+
+        <div class="stats-grid">
+
+          <!-- Sessions -->
+          <div class="stat-item" data-target="2500" data-suffix="+" data-duration="2000">
+            <div class="stat-icon-wrap stat-icon--purple">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-countup="2500">0</span><span class="stat-suffix">+</span>
+            </div>
+            <div class="stat-label">Sessions Completed</div>
+            <div class="stat-sublabel">This month alone</div>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <!-- Mentors -->
+          <div class="stat-item" data-target="680" data-suffix="+" data-duration="1800">
+            <div class="stat-icon-wrap stat-icon--blue">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-countup="680">0</span><span class="stat-suffix">+</span>
+            </div>
+            <div class="stat-label">Expert Mentors</div>
+            <div class="stat-sublabel">Across 40+ countries</div>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <!-- Rating -->
+          <div class="stat-item" data-target="4.8" data-suffix="★" data-decimal="1" data-duration="1600">
+            <div class="stat-icon-wrap stat-icon--yellow">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+              </svg>
+            </div>
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-countup="4.8" data-decimal="1">0.0</span><span class="stat-suffix stat-suffix--star">★</span>
+            </div>
+            <div class="stat-label">Average Rating</div>
+            <div class="stat-sublabel">From 12,000+ reviews</div>
+          </div>
+
+          <div class="stat-divider" aria-hidden="true"></div>
+
+          <!-- Skills -->
+          <div class="stat-item" data-target="120" data-suffix="+" data-duration="1700">
+            <div class="stat-icon-wrap stat-icon--green">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4l3 3"/>
+              </svg>
+            </div>
+            <div class="stat-number-wrap">
+              <span class="stat-number" data-countup="120">0</span><span class="stat-suffix">+</span>
+            </div>
+            <div class="stat-label">Skills Available</div>
+            <div class="stat-sublabel">New skills added weekly</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         HOW IT WORKS — Modern timeline
+         ============================================================ -->
+    <section class="section how-section" id="how-it-works">
+      <div class="container">
+        <div class="section-label-wrap">
+          <span class="section-eyebrow">The Process</span>
+          <h2 class="section-title">How SkillSwap Works</h2>
+          <p class="section-subtitle">From sign-up to your first session in minutes.</p>
+        </div>
+
+        <div class="how-timeline">
+
+          <div class="how-step" data-step="01">
+            <div class="how-step-icon-wrap">
+              <div class="how-step-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <div class="how-step-line" aria-hidden="true"></div>
+            </div>
+            <div class="how-step-content">
+              <div class="how-step-num">Step 01</div>
+              <h3 class="how-step-title">Create Your Profile</h3>
+              <p class="how-step-desc">Tell us what you know and what you want to learn. Your profile becomes your personal matchmaker — set your skills, availability, and goals in under 5 minutes.</p>
+              <div class="how-step-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                Free to join
+              </div>
+            </div>
+          </div>
+
+          <div class="how-step" data-step="02">
+            <div class="how-step-icon-wrap">
+              <div class="how-step-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="how-step-line" aria-hidden="true"></div>
+            </div>
+            <div class="how-step-content">
+              <div class="how-step-num">Step 02</div>
+              <h3 class="how-step-title">Find & Book a Session</h3>
+              <p class="how-step-desc">Browse mentors by skill, rating, and availability. Check real-time slots and book a 1-on-1 session that fits your schedule. Instant confirmation, no back-and-forth.</p>
+              <div class="how-step-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                Smart matching
+              </div>
+            </div>
+          </div>
+
+          <div class="how-step" data-step="03">
+            <div class="how-step-icon-wrap">
+              <div class="how-step-icon">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+            </div>
+            <div class="how-step-content">
+              <div class="how-step-num">Step 03</div>
+              <h3 class="how-step-title">Learn, Teach & Rate</h3>
+              <p class="how-step-desc">Connect via SkillSwap Video Rooms. Learn or teach in a focused 1-on-1 session. Afterwards, leave an honest rating to help the community grow stronger together.</p>
+              <div class="how-step-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                Verified reviews
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CATEGORIES — 8-card grid with gradient icons
+         ============================================================ -->
+    <section class="section categories-section" id="categories">
+      <div class="container">
+        <div class="section-label-wrap">
+          <span class="section-eyebrow">Explore</span>
+          <h2 class="section-title">Skills in Every Direction</h2>
+          <p class="section-subtitle">From code to music — find a mentor in any domain.</p>
+        </div>
+
+        <div class="cat-grid">
+
+          <a href="browse-skills.html?category=programming" class="cat-card" id="cat-programming">
+            <div class="cat-icon cat-icon-purple">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <h4 class="cat-name">Development</h4>
+            <p class="cat-desc">Web, mobile, AI, frameworks</p>
+            <div class="cat-count">48 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=design" class="cat-card" id="cat-design">
+            <div class="cat-icon cat-icon-pink">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5"/><circle cx="17.5" cy="10.5" r=".5"/><circle cx="8.5" cy="7.5" r=".5"/><circle cx="6.5" cy="12.5" r=".5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.477-1.112-.29-.269-.487-.644-.487-1.061a1.648 1.648 0 0 1 1.648-1.648h1.93c3.024 0 5.738-2.423 5.738-6.43C22 6.289 17.5 2 12 2z"/></svg>
+            </div>
+            <h4 class="cat-name">Design & UI/UX</h4>
+            <p class="cat-desc">Figma, branding, illustration</p>
+            <div class="cat-count">62 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=business" class="cat-card" id="cat-business">
+            <div class="cat-icon cat-icon-blue">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+            </div>
+            <h4 class="cat-name">Business</h4>
+            <p class="cat-desc">Strategy, growth, marketing</p>
+            <div class="cat-count">35 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=languages" class="cat-card" id="cat-languages">
+            <div class="cat-icon cat-icon-green">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+            </div>
+            <h4 class="cat-name">Languages</h4>
+            <p class="cat-desc">Conversation, grammar, fluency</p>
+            <div class="cat-count">54 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=data" class="cat-card" id="cat-data">
+            <div class="cat-icon cat-icon-orange">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <h4 class="cat-name">Data & AI</h4>
+            <p class="cat-desc">ML, analytics, SQL, Python</p>
+            <div class="cat-count">41 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=music" class="cat-card" id="cat-music">
+            <div class="cat-icon cat-icon-yellow">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <h4 class="cat-name">Music & Arts</h4>
+            <p class="cat-desc">Instruments, theory, vocals</p>
+            <div class="cat-count">29 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=fitness" class="cat-card" id="cat-fitness">
+            <div class="cat-icon cat-icon-teal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            </div>
+            <h4 class="cat-name">Health & Fitness</h4>
+            <p class="cat-desc">Nutrition, yoga, coaching</p>
+            <div class="cat-count">22 mentors</div>
+          </a>
+
+          <a href="browse-skills.html?category=finance" class="cat-card" id="cat-finance">
+            <div class="cat-icon cat-icon-indigo">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h4 class="cat-name">Finance</h4>
+            <p class="cat-desc">Investing, budgeting, crypto</p>
+            <div class="cat-count">18 mentors</div>
+          </a>
+
+        </div>
+
+        <div class="cat-cta-row">
+          <a href="browse-skills.html" class="btn btn-explore">
+            Explore All Skills
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TESTIMONIALS — 3 cards
+         ============================================================ -->
+    <section class="section testimonials-section" id="testimonials">
+      <div class="container">
+        <div class="section-label-wrap">
+          <span class="section-eyebrow">Reviews</span>
+          <h2 class="section-title">Loved by Learners & Mentors</h2>
+          <p class="section-subtitle">Real sessions. Real results. Real people.</p>
+        </div>
+
+        <div class="testimonials-grid">
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"I've tried so many platforms to learn Figma and none of them clicked until SkillSwap. My mentor Marcus walked me through real projects and now I've landed my first design contract. Life-changing."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">A</div>
+              <div>
+                <div class="testimonial-name">Anika Rosenberg</div>
+                <div class="testimonial-role">UI Designer, Freelance</div>
+              </div>
+              <div class="testimonial-verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                Verified
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card testimonial-card-featured">
+            <div class="testimonial-featured-badge">Most Helpful</div>
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"As a mentor, SkillSwap gives me the tools to actually help people without any friction. The booking system, the video rooms, the review system — everything just works. I've earned over $2K teaching Python this month."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #60a5fa, #2563eb);">J</div>
+              <div>
+                <div class="testimonial-name">James Okafor</div>
+                <div class="testimonial-role">Python Mentor · 4.97 ★</div>
+              </div>
+              <div class="testimonial-verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                Verified
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testimonial-stars">★★★★★</div>
+            <p class="testimonial-text">"I was skeptical at first — another learning platform, right? But the 1-on-1 format is completely different. My mentor tailored every session to my pace. In 3 weeks I went from zero to building my own React app."</p>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar" style="background: linear-gradient(135deg, #34d399, #059669);">P</div>
+              <div>
+                <div class="testimonial-name">Priya Nair</div>
+                <div class="testimonial-role">Frontend Dev, Startup</div>
+              </div>
+              <div class="testimonial-verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+                Verified
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA — Dark premium section
+         ============================================================ -->
+    <section class="cta-final-section">
+      <div class="cta-final-orb cta-final-orb-1" aria-hidden="true"></div>
+      <div class="cta-final-orb cta-final-orb-2" aria-hidden="true"></div>
+      <div class="container cta-final-inner">
+        <div class="cta-final-badge">Join 2,500+ people already learning</div>
+        <h2 class="cta-final-title">Your next skill is<br><span class="cta-final-accent">one session away.</span></h2>
+        <p class="cta-final-desc">No algorithms. No pre-recorded videos. Just a real person who's mastered what you want to learn, ready to teach you one-on-one.</p>
+        <div class="cta-final-actions">
+          <a href="register.html" class="btn btn-cta-main" id="cta-create-account">
+            Create Free Account
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+          <a href="browse-skills.html" class="btn btn-cta-secondary">Browse Mentors</a>
+        </div>
+        <div class="cta-final-guarantee">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          No credit card required · Cancel anytime
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER — Modern SaaS footer
+       ============================================================ -->
+  <footer class="footer-landing">
+    <div class="container footer-landing-inner">
+
+      <!-- Brand column -->
+      <div class="footer-brand-col">
+        <a href="index.html" class="footer-logo">
+          <img src="assets/images/logo.png" alt="SkillSwap" class="footer-logo-img">
+          <span>SkillSwap</span>
+        </a>
+        <p class="footer-brand-desc">Connecting masters with learners in a global peer-to-peer mentorship ecosystem.</p>
+        <div class="footer-socials">
+          <a href="#" class="footer-social-link" aria-label="Twitter">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+          <a href="#" class="footer-social-link" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Platform links -->
+      <div class="footer-col-group">
+        <h5 class="footer-col-heading">Platform</h5>
+        <a href="browse-skills.html" class="footer-col-link">Browse Skills</a>
+        <a href="#how-it-works" class="footer-col-link">How it Works</a>
+        <a href="register.html" class="footer-col-link">Become a Mentor</a>
+        <a href="dashboard.html" class="footer-col-link">Dashboard</a>
+      </div>
+
+      <!-- Resources -->
+      <div class="footer-col-group">
+        <h5 class="footer-col-heading">Resources</h5>
+        <a href="#" class="footer-col-link">Blog</a>
+        <a href="#" class="footer-col-link">Mentor Guide</a>
+        <a href="#" class="footer-col-link">Community</a>
+        <a href="#" class="footer-col-link">Support</a>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col-group">
+        <h5 class="footer-col-heading">Company</h5>
+        <a href="#" class="footer-col-link">About</a>
+        <a href="#" class="footer-col-link">Careers</a>
+        <a href="#" class="footer-col-link">Privacy Policy</a>
+        <a href="#" class="footer-col-link">Terms of Service</a>
+      </div>
+
+    </div>
+
+    <div class="container footer-landing-bottom">
+      <p class="footer-bottom-copy">© 2026 SkillSwap. All rights reserved. Built with ❤️ for curious minds.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/index.js"></script>
+
+  <script>
+    /* ----------------------------------------------------------------
+       Navbar: transparent → frosted glass on scroll
+    ---------------------------------------------------------------- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('navbar-scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ----------------------------------------------------------------
+       Count-up engine
+       Uses easeOutQuart for a snappy deceleration feel.
+       Reads:  data-countup="<target>"  — target number
+               data-decimal="1"         — decimal places (optional)
+               data-duration="2000"     — ms on the parent .stat-item
+    ---------------------------------------------------------------- */
+    function easeOutQuart(t) {
+      return 1 - Math.pow(1 - t, 4);
+    }
+
+    function animateCountUp(el) {
+      const target     = parseFloat(el.dataset.countup);
+      const decimals   = parseInt(el.dataset.decimal  || '0', 10);
+      const item       = el.closest('.stat-item');
+      const duration   = parseInt(item?.dataset.duration || '2000', 10);
+      const start      = performance.now();
+
+      function step(now) {
+        const elapsed  = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = easeOutQuart(progress);
+        const current  = target * eased;
+
+        el.textContent = decimals
+          ? current.toFixed(decimals)
+          : Math.floor(current).toLocaleString();
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          // Snap to exact target on finish
+          el.textContent = decimals
+            ? target.toFixed(decimals)
+            : target.toLocaleString();
+        }
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    /* ----------------------------------------------------------------
+       Single observer: handles stat-items (count-up + anim-in)
+       and all other animated elements (anim-in only).
+    ---------------------------------------------------------------- */
+    const allAnimEls = document.querySelectorAll(
+      '.stat-item, .how-step, .cat-card, .testimonial-card'
+    );
+
+    const mainObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+
+        const el = entry.target;
+
+        // Stagger delay based on sibling index for grid items
+        const siblings = Array.from(el.parentElement?.children || []);
+        const idx      = siblings.indexOf(el);
+        const delay    = el.classList.contains('stat-item') ? idx * 80 : idx * 70;
+
+        setTimeout(() => {
+          el.classList.add('anim-in');
+
+          // Trigger count-up for stat items
+          if (el.classList.contains('stat-item')) {
+            const countEl = el.querySelector('[data-countup]');
+            if (countEl) animateCountUp(countEl);
+          }
+        }, delay);
+
+        mainObserver.unobserve(el);
+      });
+    }, { threshold: 0.2 });
+
+    allAnimEls.forEach(el => mainObserver.observe(el));
+  </script>
+
+</body>
+</html>

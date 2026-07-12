@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Skills — Skill Swap</title>
+  <meta name="description" content="Manage the skills you teach and the skills you want to learn on Skill Swap.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/my-skills.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="ms-body">
+
+  <!-- Background atmosphere -->
+  <div class="ms-orb ms-orb-1" aria-hidden="true"></div>
+  <div class="ms-orb ms-orb-2" aria-hidden="true"></div>
+  <div class="ms-orb ms-orb-3" aria-hidden="true"></div>
+  <div class="ms-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link navbar-link-active">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="myskills-main">
+    <div class="container ms-container">
+
+      <!-- ============================================================
+           HERO HEADER
+           ============================================================ -->
+      <section class="ms-hero">
+        <div class="ms-hero-left">
+          <div class="ms-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" fill="currentColor"/></svg>
+            Skill Portfolio
+          </div>
+          <h1 class="ms-headline">My <span class="ms-headline-gradient">Skills</span></h1>
+          <p class="ms-subtitle">Manage what you teach and what you want to learn.</p>
+        </div>
+
+        <!-- Hero action -->
+        <div class="ms-hero-actions">
+          <!-- Add Skill button — ID preserved for my-skills.js -->
+          <button type="button" class="ms-add-btn" id="myskills-add-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            Add Skill
+          </button>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           STATS ROW
+           ============================================================ -->
+      <div class="ms-stats-row">
+        <div class="ms-stat-pill ms-stat-pill--purple">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="currentColor" stroke-width="2" fill="currentColor"/></svg>
+          <span id="ms-stat-offered">0</span> Skills Offered
+        </div>
+        <div class="ms-stat-pill ms-stat-pill--blue">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="ms-stat-wanted">0</span> Skills Wanted
+        </div>
+        <div class="ms-stat-pill ms-stat-pill--green" id="ms-stat-categories-pill">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span id="ms-stat-categories">0</span> Categories
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SEARCH + FILTER BAR
+           ============================================================ -->
+      <div class="ms-toolbar">
+        <div class="ms-search-wrap">
+          <svg class="ms-search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input
+            type="text"
+            class="ms-search-input"
+            id="ms-search-input"
+            placeholder="Search skills…"
+            autocomplete="off"
+          >
+          <button class="ms-search-clear hidden" id="ms-search-clear" aria-label="Clear search">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+
+        <div class="ms-filter-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <select class="ms-filter-select" id="ms-filter-category">
+            <option value="">All Categories</option>
+          </select>
+        </div>
+
+        <div class="ms-filter-wrap" id="ms-filter-level-wrap">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <select class="ms-filter-select" id="ms-filter-level">
+            <option value="">All Levels</option>
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="expert">Expert</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           TABS — Skills Offered / Skills Wanted
+           IDs and classes preserved for my-skills.js
+           ============================================================ -->
+      <div class="myskills-tabs ms-tabs" role="tablist">
+        <button type="button" class="myskills-tab-btn ms-tab is-active" data-tab="offered" role="tab" aria-selected="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="currentColor" stroke-width="2" fill="currentColor"/></svg>
+          Skills Offered
+          <span class="ms-tab-count" id="tab-count-offered">0</span>
+        </button>
+        <button type="button" class="myskills-tab-btn ms-tab" data-tab="wanted" role="tab" aria-selected="false">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Skills Wanted
+          <span class="ms-tab-count" id="tab-count-wanted">0</span>
+        </button>
+      </div>
+
+      <!-- ============================================================
+           OFFERED TAB PANEL — ID preserved for my-skills.js
+           ============================================================ -->
+      <div class="myskills-tab-panel ms-tab-panel is-active" id="tab-panel-offered">
+
+        <!-- Grid list — ID preserved for my-skills.js -->
+        <div class="myskills-list ms-skills-grid" id="offered-skills-list">
+          <!-- Skeleton loaders -->
+          <div class="ms-skeleton-card" aria-hidden="true">
+            <div class="ms-sk-line ms-sk-line--w60"></div>
+            <div class="ms-sk-line ms-sk-line--w40"></div>
+            <div class="ms-sk-line ms-sk-line--w80"></div>
+          </div>
+          <div class="ms-skeleton-card" aria-hidden="true">
+            <div class="ms-sk-line ms-sk-line--w50"></div>
+            <div class="ms-sk-line ms-sk-line--w30"></div>
+            <div class="ms-sk-line ms-sk-line--w70"></div>
+          </div>
+          <div class="ms-skeleton-card" aria-hidden="true">
+            <div class="ms-sk-line ms-sk-line--w70"></div>
+            <div class="ms-sk-line ms-sk-line--w45"></div>
+            <div class="ms-sk-line ms-sk-line--w60"></div>
+          </div>
+        </div>
+
+        <!-- Empty state — ID preserved for my-skills.js -->
+        <div class="empty-state ms-empty-state hidden" id="offered-empty-state">
+          <div class="ms-empty-illustration">
+            <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="38" fill="rgba(124,58,237,0.07)" stroke="rgba(124,58,237,0.18)" stroke-width="1.5"/>
+              <path d="M40 22l4.8 14.8H60l-12.4 9 4.8 14.8L40 51.6 27.6 60.6l4.8-14.8L20 36.8h15.2z" fill="rgba(124,58,237,0.12)" stroke="rgba(124,58,237,0.3)" stroke-width="1.5" stroke-linejoin="round"/>
+              <circle cx="56" cy="56" r="10" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1.5"/>
+              <path d="M52 56l2.5 2.5 5-5" stroke="rgba(110,231,183,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 class="ms-empty-title">No Skills Offered Yet</h3>
+          <p class="ms-empty-body">Add a skill to start appearing in the marketplace as a mentor.</p>
+          <button type="button" class="ms-empty-cta" id="ms-offered-empty-add-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Add Your First Skill
+          </button>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           WANTED TAB PANEL — ID preserved for my-skills.js
+           ============================================================ -->
+      <div class="myskills-tab-panel ms-tab-panel" id="tab-panel-wanted">
+
+        <!-- Grid list — ID preserved for my-skills.js -->
+        <div class="myskills-list ms-skills-grid" id="wanted-skills-list">
+          <div class="ms-skeleton-card" aria-hidden="true">
+            <div class="ms-sk-line ms-sk-line--w60"></div>
+            <div class="ms-sk-line ms-sk-line--w40"></div>
+          </div>
+          <div class="ms-skeleton-card" aria-hidden="true">
+            <div class="ms-sk-line ms-sk-line--w50"></div>
+            <div class="ms-sk-line ms-sk-line--w30"></div>
+          </div>
+        </div>
+
+        <!-- Empty state — ID preserved for my-skills.js -->
+        <div class="empty-state ms-empty-state hidden" id="wanted-empty-state">
+          <div class="ms-empty-illustration">
+            <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+              <circle cx="40" cy="40" r="38" fill="rgba(59,130,246,0.07)" stroke="rgba(59,130,246,0.18)" stroke-width="1.5"/>
+              <path d="M40 24c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16" stroke="rgba(99,102,241,0.5)" stroke-width="2" stroke-linecap="round"/>
+              <path d="M48 24h8v8" stroke="rgba(99,102,241,0.6)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M36 40h8M40 36v8" stroke="rgba(147,197,253,0.8)" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 class="ms-empty-title">No Skills Wanted Yet</h3>
+          <p class="ms-empty-body">Add a skill you'd like to learn so mentors and matches can find you.</p>
+          <button type="button" class="ms-empty-cta ms-empty-cta--blue" id="ms-wanted-empty-add-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Add a Skill to Learn
+          </button>
+        </div>
+      </div>
+
+    </div><!-- /.ms-container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach &amp; grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       ADD / EDIT SKILL MODAL
+       All IDs, classes and form fields preserved for my-skills.js
+       ============================================================ -->
+  <div class="myskills-modal-overlay ms-modal-overlay" id="myskills-modal-overlay">
+    <div class="myskills-modal ms-modal" role="dialog" aria-modal="true" aria-labelledby="myskills-modal-title">
+
+      <!-- Gradient top bar -->
+      <div class="ms-modal-topbar" aria-hidden="true"></div>
+
+      <div class="myskills-modal-header ms-modal-header">
+        <div class="ms-modal-title-group">
+          <div class="ms-modal-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <h3 id="myskills-modal-title" class="ms-modal-title">Add a skill</h3>
+        </div>
+        <button type="button" class="myskills-modal-close-btn ms-modal-close" id="myskills-modal-close-btn" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" fill="none" width="16" height="16">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Alert — ID preserved for my-skills.js -->
+      <div class="auth-alert ms-modal-alert" id="myskills-modal-alert" role="alert"></div>
+
+      <!-- Form — ID preserved for my-skills.js -->
+      <form id="myskills-form" novalidate class="ms-modal-form">
+
+        <!-- Hidden inputs — IDs preserved -->
+        <input type="hidden" id="skill-form-id" value="">
+        <input type="hidden" id="skill-form-type" value="offered">
+
+        <!-- Skill name -->
+        <div class="form-group ms-form-group">
+          <label for="skill-form-name" class="ms-form-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Skill Name
+          </label>
+          <input type="text" id="skill-form-name" class="form-input ms-form-input" placeholder="e.g. UI/UX Design, Python, Photography…" required autocomplete="off">
+          <span class="form-error"></span>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group ms-form-group">
+          <label for="skill-form-category" class="ms-form-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h16M4 14h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Category
+          </label>
+          <select id="skill-form-category" class="form-select ms-form-select">
+            <option value="">Select a category</option>
+          </select>
+          <span class="form-error"></span>
+        </div>
+
+        <!-- Proficiency — offered only (class preserved for my-skills.js) -->
+        <div class="form-group myskills-offered-only ms-offered-only ms-form-group" id="skill-form-proficiency-group">
+          <label for="skill-form-proficiency" class="ms-form-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Your Proficiency Level
+          </label>
+          <!-- Custom proficiency pills (select hidden, drives the value) -->
+          <div class="ms-proficiency-pills" id="ms-proficiency-pills">
+            <label class="ms-prof-pill">
+              <input type="radio" name="proficiency_visual" value="beginner">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2v4M12 18v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M2 12h4M18 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Beginner
+              </span>
+            </label>
+            <label class="ms-prof-pill">
+              <input type="radio" name="proficiency_visual" value="intermediate" checked>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Intermediate
+              </span>
+            </label>
+            <label class="ms-prof-pill">
+              <input type="radio" name="proficiency_visual" value="expert">
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" stroke="currentColor" stroke-width="2" fill="currentColor"/></svg>
+                Expert
+              </span>
+            </label>
+          </div>
+          <!-- Hidden select that my-skills.js reads — preserved -->
+          <select id="skill-form-proficiency" class="form-select ms-hidden-select" aria-hidden="true" tabindex="-1">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate" selected>Intermediate</option>
+            <option value="expert">Expert</option>
+          </select>
+          <span class="form-error"></span>
+        </div>
+
+        <!-- Description — offered only (class preserved for my-skills.js) -->
+        <div class="form-group myskills-offered-only ms-offered-only ms-form-group" id="skill-form-description-group">
+          <label for="skill-form-description" class="ms-form-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Description
+            <span class="ms-optional-tag">Optional</span>
+          </label>
+          <textarea id="skill-form-description" class="form-textarea ms-form-textarea" maxlength="2000" rows="4" placeholder="Describe what you can teach, your approach, and what learners can expect…"></textarea>
+          <span class="form-error"></span>
+          <div class="ms-char-counter"><span id="ms-desc-count">0</span> / 2000</div>
+        </div>
+
+        <!-- Actions — IDs preserved for my-skills.js -->
+        <div class="myskills-modal-actions ms-modal-actions">
+          <button type="submit" class="ms-save-btn" id="myskills-save-btn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Save Skill
+          </button>
+          <button type="button" class="ms-cancel-btn" id="myskills-modal-cancel-btn">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/my-skills.js"></script>
+  <script src="assets/js/my-skills-ui.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+# .gitignore for SkillSwap project
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Dependency directories (if using Composer)
+vendor/
+
+# IDE / editor folders
+.idea/
+*.iml
+.vscode/
+
+# Environment configuration files
+.env
+config/config.php
+
+# XAMPP specific
+*.tmp
+*.bak
+
+# Build artifacts
+dist/
+build/
+
+# Other temporary files
+*.swp
+*~
+
+# Node modules (if any front-end tooling used)
+node_modules/
+
+# PHPStorm project files
+*.phpstorm.meta.php
+
+# Composer lock (if you want to commit, you could keep but often ignored)
+composer.lock

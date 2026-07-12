@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create your account — Skill Swap</title>
+  <meta name="description" content="Join Skill Swap to teach what you know and learn what you don't.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="auth-page">
+
+    <!-- ============================================================
+         BRAND PANEL (desktop only)
+         ============================================================ -->
+    <aside class="auth-brand-panel">
+      <a href="index.html" class="auth-brand-logo">
+        <img src="assets/images/logo.png" alt="" class="auth-brand-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <div class="auth-brand-content">
+        <h2>Teaching is the fastest way to learn.</h2>
+        <p>Set up your profile once, list what you can teach and what you want to learn, and let the right people find you.</p>
+      </div>
+
+      <div class="auth-brand-quote">
+        <p>&ldquo;I taught conversational Spanish for three weekends and walked away with a working knowledge of Figma. Best trade I've made.&rdquo;</p>
+        <p class="auth-brand-quote-author">— Member since 2025</p>
+      </div>
+    </aside>
+
+    <!-- ============================================================
+         FORM PANEL
+         ============================================================ -->
+    <div class="auth-form-panel">
+      <div class="auth-form-wrap">
+
+        <a href="index.html" class="auth-mobile-logo">
+          <img src="assets/images/logo.png" alt="" class="auth-mobile-logo-img">
+          <span>Skill Swap</span>
+        </a>
+
+        <div class="auth-form-header">
+          <h1>Create your account</h1>
+          <p>Start teaching and learning in minutes.</p>
+        </div>
+
+        <div class="auth-alert" id="register-alert" role="alert"></div>
+
+        <form id="register-form" class="auth-form" novalidate>
+
+          <div class="form-group">
+            <label for="register-name" class="form-label">Full name</label>
+            <input
+              type="text"
+              id="register-name"
+              name="name"
+              class="form-input"
+              placeholder="e.g. Priya Sharma"
+              autocomplete="name"
+              required
+            >
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="register-email" class="form-label">Email address</label>
+            <input
+              type="email"
+              id="register-email"
+              name="email"
+              class="form-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="register-password" class="form-label">Password</label>
+            <div class="auth-password-wrap">
+              <input
+                type="password"
+                id="register-password"
+                name="password"
+                class="form-input"
+                placeholder="At least 8 characters"
+                autocomplete="new-password"
+                required
+              >
+              <button type="button" class="auth-password-toggle" id="register-password-toggle" aria-label="Show password">Show</button>
+            </div>
+            <div class="auth-password-strength" id="password-strength-meter" aria-hidden="true">
+              <span class="auth-password-strength-bar"></span>
+              <span class="auth-password-strength-bar"></span>
+              <span class="auth-password-strength-bar"></span>
+            </div>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="register-confirm-password" class="form-label">Confirm password</label>
+            <input
+              type="password"
+              id="register-confirm-password"
+              name="confirm_password"
+              class="form-input"
+              placeholder="Re-enter your password"
+              autocomplete="new-password"
+              required
+            >
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="register-experience" class="form-label">Experience level</label>
+            <select id="register-experience" name="experience_level" class="form-select" required>
+              <option value="" disabled selected>Select your level</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate</option>
+              <option value="expert">Expert</option>
+            </select>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="auth-options-row">
+            <label class="auth-checkbox-label" for="register-terms">
+              <input type="checkbox" id="register-terms" name="terms" required>
+              <span>I agree to the <a href="#" class="auth-link">Terms</a> & <a href="#" class="auth-link">Privacy Policy</a></span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="register-submit-btn">
+            Create account
+          </button>
+        </form>
+
+        <p class="auth-footer-text">
+          Already have an account? <a href="login.html" class="auth-link">Log in</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/register.js"></script>
+</body>
+</html>

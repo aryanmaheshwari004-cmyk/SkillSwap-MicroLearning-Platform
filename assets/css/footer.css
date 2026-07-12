@@ -1,0 +1,74 @@
+/* ==========================================================================
+   Skill Swap - Footer Component
+   Shared across every page. Brand column + link columns + bottom bar.
+   Built on design tokens from base.css.
+   ========================================================================== */
+
+.footer {
+  background-color: var(--color-primary-900);
+  color: var(--color-primary-100);
+  margin-top: var(--space-9);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-block: var(--space-8);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-brand .navbar-logo {
+  color: var(--color-surface);
+}
+
+.footer-brand p {
+  color: var(--color-ink-300);
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.footer-col h4 {
+  color: var(--color-surface);
+  font-size: var(--fs-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: var(--space-1);
+}
+
+.footer-col a {
+  color: var(--color-primary-100);
+  font-size: var(--fs-sm);
+  transition: color var(--transition-fast);
+}
+
+.footer-col a:hover {
+  color: var(--color-surface);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-block: var(--space-4);
+}
+
+.footer-bottom p {
+  color: var(--color-ink-300);
+}
+
+/* --------------------------------------------------------------------
+   Desktop layout
+   -------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+}

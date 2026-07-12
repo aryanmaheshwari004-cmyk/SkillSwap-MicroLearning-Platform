@@ -1,0 +1,89 @@
+/* ==========================================================================
+   Skill Swap - Global Responsive Rules
+   Cross-page breakpoint adjustments not specific to any single
+   component (typography scaling, container padding, section spacing).
+   Page-specific responsive rules live in each page's own CSS file.
+   Loaded last so it can fine-tune base.css and component rules.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------
+   Mobile-first base adjustments (≤ 599px)
+   -------------------------------------------------------------------- */
+@media (max-width: 599px) {
+  :root {
+    --fs-3xl: 2.25rem;
+    --fs-2xl: 1.75rem;
+    --fs-xl: 1.25rem;
+  }
+
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .section {
+    padding-block: var(--space-7);
+  }
+
+  .btn-lg {
+    height: 48px;
+    font-size: var(--fs-sm);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Small tablets (600px - 767px)
+   -------------------------------------------------------------------- */
+@media (min-width: 600px) and (max-width: 767px) {
+  :root {
+    --fs-3xl: 2.5rem;
+  }
+
+  .container {
+    padding-inline: var(--space-5);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Tablets (768px - 1023px)
+   -------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Desktop (1024px+)
+   -------------------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .section {
+    padding-block: var(--space-10);
+  }
+}
+
+/* --------------------------------------------------------------------
+   Touch target accessibility: ensure tappable elements stay
+   comfortably sized on touch devices regardless of page.
+   -------------------------------------------------------------------- */
+@media (pointer: coarse) {
+  .btn,
+  .navbar-burger,
+  .myskills-icon-btn,
+  .browse-pagination-btn {
+    min-height: 40px;
+    min-width: 40px;
+  }
+}
+
+/* --------------------------------------------------------------------
+   Print: hide chrome, keep content readable
+   -------------------------------------------------------------------- */
+@media print {
+  .navbar,
+  .footer,
+  .toast-container,
+  .navbar-burger,
+  .navbar-mobile-menu {
+    display: none !important;
+  }
+}

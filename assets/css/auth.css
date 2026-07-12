@@ -1,0 +1,300 @@
+/* ==========================================================================
+   Skill Swap - Auth Pages (login.html, register.html)
+   Centered split layout: brand panel + form card.
+   Built on design tokens from base.css.
+   ========================================================================== */
+
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* --------------------------------------------------------------------
+   Brand panel (left side on desktop, hidden on mobile)
+   -------------------------------------------------------------------- */
+.auth-brand-panel {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-primary-700);
+  color: var(--color-surface);
+  padding: var(--space-7);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-brand-panel::before {
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background-color: var(--color-primary-500);
+  opacity: 0.4;
+  top: -180px;
+  right: -180px;
+}
+
+.auth-brand-panel::after {
+  content: '';
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background-color: var(--color-accent-500);
+  opacity: 0.12;
+  bottom: -120px;
+  left: -100px;
+}
+
+.auth-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  position: relative;
+  z-index: 1;
+}
+
+.auth-brand-logo-img {
+  width: 32px;
+  height: 32px;
+}
+
+.auth-brand-content {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+}
+
+.auth-brand-content h2 {
+  color: var(--color-surface);
+  font-size: var(--fs-2xl);
+  margin-bottom: var(--space-4);
+}
+
+.auth-brand-content p {
+  color: var(--color-primary-100);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+}
+
+.auth-brand-quote {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: var(--space-5);
+}
+
+.auth-brand-quote p {
+  color: var(--color-surface);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-2);
+}
+
+.auth-brand-quote-author {
+  color: var(--color-primary-100);
+  font-size: var(--fs-xs);
+}
+
+/* --------------------------------------------------------------------
+   Form panel (right side / full width on mobile)
+   -------------------------------------------------------------------- */
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6) var(--space-5);
+}
+
+.auth-form-wrap {
+  width: 100%;
+  max-width: 420px;
+}
+
+.auth-form-header {
+  margin-bottom: var(--space-6);
+}
+
+.auth-mobile-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-md);
+  color: var(--color-ink-900);
+  margin-bottom: var(--space-6);
+}
+
+.auth-mobile-logo-img {
+  width: 30px;
+  height: 30px;
+}
+
+.auth-form-header h1 {
+  font-size: var(--fs-xl);
+  margin-bottom: var(--space-2);
+}
+
+.auth-form-header p {
+  color: var(--color-ink-500);
+  font-size: var(--fs-sm);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 var(--space-4);
+}
+
+.auth-password-wrap {
+  position: relative;
+}
+
+.auth-password-toggle {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--color-ink-500);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.auth-password-toggle:hover {
+  color: var(--color-ink-900);
+  background-color: var(--color-surface-sunken);
+}
+
+.auth-password-strength {
+  display: flex;
+  gap: 4px;
+  margin-top: var(--space-2);
+}
+
+.auth-password-strength-bar {
+  flex: 1;
+  height: 4px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-ink-100);
+  transition: background-color var(--transition-fast);
+}
+
+.auth-password-strength-bar.is-weak { background-color: var(--color-danger-600); }
+.auth-password-strength-bar.is-medium { background-color: var(--color-warning-600); }
+.auth-password-strength-bar.is-strong { background-color: var(--color-success-600); }
+
+.auth-options-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -var(--space-2);
+  margin-bottom: var(--space-5);
+  font-size: var(--fs-sm);
+}
+
+.auth-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-ink-700);
+  cursor: pointer;
+}
+
+.auth-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-accent-500);
+}
+
+.auth-link {
+  color: var(--color-accent-600);
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-block: var(--space-5);
+  color: var(--color-ink-300);
+  font-size: var(--fs-xs);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.auth-footer-text {
+  text-align: center;
+  margin-top: var(--space-6);
+  font-size: var(--fs-sm);
+  color: var(--color-ink-500);
+}
+
+.auth-terms-text {
+  font-size: var(--fs-xs);
+  color: var(--color-ink-500);
+  text-align: center;
+  margin-top: var(--space-5);
+  line-height: var(--lh-relaxed);
+}
+
+/* --------------------------------------------------------------------
+   Top-level form error banner
+   -------------------------------------------------------------------- */
+.auth-alert {
+  display: none;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-danger-100);
+  color: var(--color-danger-600);
+  font-size: var(--fs-sm);
+  margin-bottom: var(--space-5);
+}
+
+.auth-alert.is-visible {
+  display: flex;
+}
+
+/* --------------------------------------------------------------------
+   Desktop layout: split screen
+   -------------------------------------------------------------------- */
+@media (min-width: 960px) {
+  .auth-page {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .auth-brand-panel {
+    display: flex;
+  }
+
+  .auth-mobile-logo {
+    display: none;
+  }
+
+  .auth-form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}

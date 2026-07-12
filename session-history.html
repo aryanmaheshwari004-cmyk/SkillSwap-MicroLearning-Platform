@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session History — Skill Swap</title>
+  <meta name="description" content="View your completed, rejected, and cancelled sessions.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/sessions.css">
+  <link rel="stylesheet" href="assets/css/session-history.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="sess-body">
+
+  <!-- Background atmosphere -->
+  <div class="sess-orb sess-orb-1" aria-hidden="true"></div>
+  <div class="sess-orb sess-orb-2" aria-hidden="true"></div>
+  <div class="sess-orb sess-orb-3" aria-hidden="true"></div>
+  <div class="sess-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link navbar-link-active">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="sessions-main">
+    <div class="container sess-container">
+
+      <!-- ============================================================
+           HERO SECTION
+           ============================================================ -->
+      <section class="sess-hero">
+        <div class="sess-hero-left">
+          <div class="sess-badge">
+            <span class="sess-badge-dot"></span>
+            Session Tracker
+          </div>
+          <h1 class="sess-headline">Session <span class="sess-headline-gradient">History</span></h1>
+          <p class="sess-subtitle">Review your past skill-sharing achievements, ratings, and milestones.</p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           METRICS SUMMARY GRID
+           ============================================================ -->
+      <section class="history-stats-grid">
+        <div class="history-stat-card">
+          <div class="history-stat-icon history-stat-icon--completed">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="history-stat-info">
+            <span class="history-stat-value" id="stat-completed">0</span>
+            <span class="history-stat-label">Total Swaps</span>
+          </div>
+        </div>
+
+        <div class="history-stat-card">
+          <div class="history-stat-icon history-stat-icon--hours">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="history-stat-info">
+            <span class="history-stat-value" id="stat-hours">0h</span>
+            <span class="history-stat-label">Hours Swapped</span>
+          </div>
+        </div>
+
+        <div class="history-stat-card">
+          <div class="history-stat-icon history-stat-icon--success">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="history-stat-info">
+            <span class="history-stat-value" id="stat-success">0%</span>
+            <span class="history-stat-label">Success Rate</span>
+          </div>
+        </div>
+
+        <div class="history-stat-card">
+          <div class="history-stat-icon history-stat-icon--milestone">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34M12 2a4 4 0 0 0-4 4v5a4 4 0 0 0 8 0V6a4 4 0 0 0-4-4z"/></svg>
+          </div>
+          <div class="history-stat-info">
+            <span class="history-stat-value" id="stat-milestone">—</span>
+            <span class="history-stat-label">Next Milestone</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           TABS — Upcoming / History
+           ============================================================ -->
+      <div class="sess-tabs-wrap">
+        <nav class="sessions-tabs sess-tabs" role="tablist">
+          <a href="upcoming-sessions.html" class="sessions-tab-link sess-tab" role="tab" aria-selected="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            Upcoming
+          </a>
+          <a href="session-history.html" class="sessions-tab-link sess-tab is-active" role="tab" aria-selected="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
+            History
+          </a>
+        </nav>
+
+        <a href="browse-skills.html" class="sess-find-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          Find Mentors
+        </a>
+      </div>
+
+      <!-- ============================================================
+           MAIN LAYOUT GRID
+           ============================================================ -->
+      <div class="history-main-layout">
+
+        <!-- LEFT COLUMN: Search, Filters & Timeline List -->
+        <div class="history-col-main">
+
+          <!-- Search & Filter Controls -->
+          <div class="history-filter-bar">
+            <div class="history-search-wrapper">
+              <svg class="history-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="search" id="history-search" class="history-search-input" placeholder="Search by name or skill..." aria-label="Search past sessions">
+            </div>
+
+            <div class="history-filters-group">
+              <select id="filter-role" class="history-select" aria-label="Filter by role">
+                <option value="all">All Roles</option>
+                <option value="mentor">As Mentor</option>
+                <option value="learner">As Learner</option>
+              </select>
+
+              <select id="filter-status" class="history-select" aria-label="Filter by status">
+                <option value="all">All Statuses</option>
+                <option value="completed">Completed</option>
+                <option value="rejected">Rejected</option>
+                <option value="cancelled">Cancelled</option>
+              </select>
+
+              <select id="filter-skill" class="history-select" aria-label="Filter by skill">
+                <option value="all">All Skills</option>
+                <!-- Populated dynamically via JS -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Chronological Timeline Wrapper -->
+          <div class="timeline-outer-wrap">
+            <div class="timeline-vertical-line" id="timeline-track"></div>
+
+            <!-- List container — ID preserved for session-history.js -->
+            <div class="sessions-list timeline-inner-list" id="history-sessions-list">
+              <!-- Skeleton loaders while data is fetching -->
+              <div class="sess-skeleton" aria-hidden="true"></div>
+              <div class="sess-skeleton" aria-hidden="true"></div>
+              <div class="sess-skeleton" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Empty state — ID preserved for session-history.js -->
+          <div class="empty-state sess-empty-state hidden" id="history-empty-state">
+            <div class="sess-empty-illustration">
+              <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="38" fill="rgba(124,58,237,0.07)" stroke="rgba(124,58,237,0.18)" stroke-width="1.5"/>
+                <rect x="20" y="18" width="40" height="44" rx="6" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.28)" stroke-width="1.5"/>
+                <path d="M29 30h22M29 39h22M29 48h14" stroke="rgba(167,139,250,0.45)" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="28" cy="18" r="4" fill="rgba(124,58,237,0.25)" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+                <circle cx="52" cy="18" r="4" fill="rgba(124,58,237,0.25)" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="sess-empty-title">No matching sessions found</h3>
+            <p class="sess-empty-body">Try clearing your filters or browse the community to swap new skills.</p>
+            <a href="browse-skills.html" class="sess-empty-cta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Browse Mentors
+            </a>
+          </div>
+
+        </div><!-- /.history-col-main -->
+
+        <!-- RIGHT COLUMN: Sidebar Widgets (Learning Progress & Badges) -->
+        <aside class="history-col-side">
+
+          <!-- Learning Balance Widget -->
+          <div class="sess-glass-card progress-card" style="margin-bottom: 1.25rem;">
+            <div class="sidebar-section-title">Learning Balance</div>
+            <div class="progress-card-inner">
+              <div class="progress-stats-row">
+                <div class="progress-stat-sub">
+                  <span class="progress-stat-sub-val" id="balance-val-learn">0h</span>
+                  <span class="progress-stat-sub-label">Learning</span>
+                </div>
+                <div class="progress-stat-sub">
+                  <span class="progress-stat-sub-val" id="balance-val-mentor">0h</span>
+                  <span class="progress-stat-sub-label">Mentoring</span>
+                </div>
+              </div>
+
+              <!-- balance progress indicator -->
+              <div class="balance-bar-wrapper">
+                <div class="balance-bar-labels">
+                  <span class="balance-label--learn" id="balance-pct-learn">50% Learn</span>
+                  <span class="balance-label--mentor" id="balance-pct-mentor">50% Teach</span>
+                </div>
+                <div class="balance-bar-track">
+                  <div class="balance-bar-fill-learn" id="balance-fill-learn" style="width: 50%;"></div>
+                  <div class="balance-bar-fill-mentor" id="balance-fill-mentor" style="width: 50%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievement Badges Widget -->
+          <div class="sess-glass-card badges-card">
+            <div class="sidebar-section-title">Achievements</div>
+            <div class="badges-showcase-grid" id="badges-grid">
+              <!-- Rendered dynamically by JS -->
+            </div>
+          </div>
+
+        </aside><!-- /.history-col-side -->
+
+      </div><!-- /.history-main-layout -->
+
+    </div><!-- /.container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach &amp; grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/session-history.js"></script>
+</body>
+</html>

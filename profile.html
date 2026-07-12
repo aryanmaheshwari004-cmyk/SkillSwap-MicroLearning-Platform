@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile — Skill Swap</title>
+  <meta name="description" content="View and manage your Skill Swap profile — skills, experience, reviews, and more.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/profile.css">
+</head>
+<body class="profile-body">
+
+  <!-- Background atmosphere -->
+  <div class="profile-orb profile-orb-1" aria-hidden="true"></div>
+  <div class="profile-orb profile-orb-2" aria-hidden="true"></div>
+  <div class="profile-orb profile-orb-3" aria-hidden="true"></div>
+  <div class="profile-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn-dash-secondary btn-sm-nav">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="profile-main">
+
+    <!-- ============================================================
+         COVER BANNER
+         ============================================================ -->
+    <div class="profile-cover" id="profile-cover" aria-hidden="true">
+      <div class="profile-cover-gradient"></div>
+      <div class="profile-cover-pattern"></div>
+    </div>
+
+    <div class="profile-container container">
+
+      <!-- ============================================================
+           IDENTITY CARD (avatar + name + bio + actions)
+           ============================================================ -->
+      <section class="profile-identity-card" id="profile-header-card" aria-label="Profile header">
+
+        <!-- Avatar row -->
+        <div class="profile-avatar-row">
+          <div class="profile-avatar-wrap">
+            <img src="assets/images/default-avatar.png" alt="Profile photo" class="profile-avatar-img" id="profile-photo-img">
+            <button type="button" class="profile-avatar-upload-btn" id="profile-photo-upload-btn" aria-label="Change profile photo" title="Change photo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+                <circle cx="12" cy="13" r="4"/>
+              </svg>
+            </button>
+            <input type="file" id="profile-photo-input" class="profile-photo-input" accept="image/jpeg,image/png,image/webp">
+          </div>
+
+          <!-- Name & meta (desktop: inline with avatar) -->
+          <div class="profile-identity-info">
+            <div class="profile-name-row">
+              <h1 class="profile-name" id="profile-name-display">
+                <span class="profile-name-skeleton skeleton" style="width:200px;height:32px;display:inline-block;border-radius:8px;"></span>
+              </h1>
+              <span class="profile-experience-badge" id="profile-experience-badge"></span>
+            </div>
+            <p class="profile-email" id="profile-email-display">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span id="profile-email-text"></span>
+            </p>
+            <p class="profile-member-since" id="profile-member-since">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span id="profile-member-since-text">Member since —</span>
+            </p>
+          </div>
+
+          <!-- Action buttons -->
+          <div class="profile-header-actions">
+            <button type="button" class="btn-dash-secondary" id="profile-edit-toggle-btn" aria-expanded="false">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Edit Profile
+            </button>
+            <a href="reviews.html" class="btn-dash-secondary" id="profile-reviews-link" style="display:none;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              All Reviews
+            </a>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <p class="profile-bio" id="profile-bio-display">Loading your profile...</p>
+
+        <!-- Stats row -->
+        <div class="profile-stats-bar">
+          <div class="profile-stat-item">
+            <span class="profile-stat-value" id="stat-sessions-completed">—</span>
+            <span class="profile-stat-label">Sessions</span>
+          </div>
+          <div class="profile-stat-divider" aria-hidden="true"></div>
+          <div class="profile-stat-item">
+            <span class="profile-stat-value" id="stat-skills-offered">—</span>
+            <span class="profile-stat-label">Skills Offered</span>
+          </div>
+          <div class="profile-stat-divider" aria-hidden="true"></div>
+          <div class="profile-stat-item">
+            <div class="profile-rating-display" id="profile-rating-display">
+              <span class="profile-stat-value" id="stat-avg-rating">—</span>
+              <div class="profile-star-row" id="profile-star-row" aria-label="Rating stars"></div>
+            </div>
+            <span class="profile-stat-label">Avg Rating</span>
+          </div>
+          <div class="profile-stat-divider" aria-hidden="true"></div>
+          <div class="profile-stat-item profile-stat-item--review">
+            <span class="profile-stat-value" id="stat-review-count">—</span>
+            <span class="profile-stat-label">Reviews</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           MAIN CONTENT GRID
+           ============================================================ -->
+      <div class="profile-content-grid" id="profile-view-content">
+
+        <!-- LEFT COLUMN -->
+        <div class="profile-col-main">
+
+          <!-- Skills Offered -->
+          <section class="profile-glass-card" aria-label="Skills offered">
+            <div class="profile-card-header">
+              <div class="profile-card-title-group">
+                <div class="profile-card-icon profile-card-icon--purple">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div>
+                  <h2 class="profile-card-title">Skills Offered</h2>
+                  <p class="profile-card-subtitle">What I can teach</p>
+                </div>
+              </div>
+              <a href="my-skills.html" class="profile-card-link">
+                Manage
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div class="profile-skills-grid" id="skills-offered-list" role="list" aria-label="Skills offered list">
+              <div class="profile-skill-skeleton skeleton"></div>
+              <div class="profile-skill-skeleton skeleton" style="width:100px;"></div>
+              <div class="profile-skill-skeleton skeleton" style="width:130px;"></div>
+            </div>
+          </section>
+
+          <!-- Skills Wanted -->
+          <section class="profile-glass-card" aria-label="Skills wanted">
+            <div class="profile-card-header">
+              <div class="profile-card-title-group">
+                <div class="profile-card-icon profile-card-icon--blue">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+                </div>
+                <div>
+                  <h2 class="profile-card-title">Skills Wanted</h2>
+                  <p class="profile-card-subtitle">What I want to learn</p>
+                </div>
+              </div>
+              <a href="my-skills.html" class="profile-card-link">
+                Manage
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+            <div class="profile-skills-grid" id="skills-wanted-list" role="list" aria-label="Skills wanted list">
+              <div class="profile-skill-skeleton skeleton" style="width:115px;"></div>
+              <div class="profile-skill-skeleton skeleton" style="width:90px;"></div>
+            </div>
+          </section>
+
+          <!-- Reviews Preview -->
+          <section class="profile-glass-card" aria-label="Recent reviews" id="reviews-section">
+            <div class="profile-card-header">
+              <div class="profile-card-title-group">
+                <div class="profile-card-icon profile-card-icon--amber">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div>
+                  <h2 class="profile-card-title">Reviews</h2>
+                  <p class="profile-card-subtitle" id="reviews-count-subtitle">Loading...</p>
+                </div>
+              </div>
+              <a href="reviews.html" class="profile-card-link" id="see-all-reviews-link" style="display:none;">
+                See all
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+
+            <!-- Rating summary bar -->
+            <div class="profile-rating-summary" id="profile-rating-summary" style="display:none;">
+              <div class="profile-rating-big">
+                <span class="profile-rating-big-num" id="rating-big-num">—</span>
+                <div class="profile-rating-big-stars" id="rating-big-stars" aria-label="Overall rating stars"></div>
+                <span class="profile-rating-big-count" id="rating-big-count"></span>
+              </div>
+              <div class="profile-rating-bars" id="profile-rating-bars" aria-label="Rating breakdown"></div>
+            </div>
+
+            <div class="profile-reviews-list" id="profile-reviews-list" aria-live="polite">
+              <div class="profile-review-skeleton">
+                <div class="skeleton" style="width:40px;height:40px;border-radius:50%;flex-shrink:0;"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                  <div class="skeleton" style="height:14px;width:140px;border-radius:6px;"></div>
+                  <div class="skeleton" style="height:12px;width:80%;border-radius:6px;"></div>
+                  <div class="skeleton" style="height:12px;width:60%;border-radius:6px;"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /.profile-col-main -->
+
+        <!-- RIGHT COLUMN -->
+        <div class="profile-col-side">
+
+          <!-- Profile Completion Widget -->
+          <section class="profile-glass-card profile-completion-card" aria-label="Profile completion">
+            <div class="profile-card-header">
+              <div class="profile-card-title-group">
+                <div class="profile-card-icon profile-card-icon--green">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div>
+                  <h2 class="profile-card-title">Profile Completion</h2>
+                  <p class="profile-card-subtitle">Boost your visibility</p>
+                </div>
+              </div>
+              <span class="profile-completion-pct" id="completion-pct">0%</span>
+            </div>
+
+            <!-- Ring gauge -->
+            <div class="profile-completion-ring-wrap">
+              <div class="profile-completion-ring">
+                <svg class="profile-ring-svg" viewBox="0 0 120 120" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="profileRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#a78bfa"/>
+                      <stop offset="100%" stop-color="#818cf8"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="profile-ring-track" cx="60" cy="60" r="50"/>
+                  <circle class="profile-ring-fill" cx="60" cy="60" r="50" id="completion-ring-fill"/>
+                </svg>
+                <div class="profile-ring-center">
+                  <span class="profile-ring-pct" id="completion-ring-pct">0%</span>
+                  <span class="profile-ring-label">Complete</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Checklist -->
+            <ul class="profile-completion-checks" id="completion-checks-list" aria-label="Profile completion checklist">
+            </ul>
+          </section>
+
+          <!-- Social / Contact Card -->
+          <section class="profile-glass-card" aria-label="Contact and links">
+            <div class="profile-card-header">
+              <div class="profile-card-title-group">
+                <div class="profile-card-icon profile-card-icon--pink">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+                </div>
+                <div>
+                  <h2 class="profile-card-title">Contact</h2>
+                  <p class="profile-card-subtitle">Reach out or connect</p>
+                </div>
+              </div>
+            </div>
+            <div class="profile-contact-list" id="profile-contact-list">
+              <!-- Populated by JS -->
+              <div class="profile-contact-item">
+                <div class="profile-contact-icon">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <span class="profile-contact-label">Email</span>
+                <span class="profile-contact-value" id="contact-email-value">—</span>
+              </div>
+            </div>
+
+            <!-- Browse skills CTA -->
+            <a href="browse-skills.html" class="profile-cta-btn" id="profile-browse-cta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              Browse Skills
+            </a>
+          </section>
+
+          <!-- Experience Level Detail Card -->
+          <section class="profile-glass-card" aria-label="Experience level">
+            <div class="profile-card-header" style="margin-bottom:0;">
+              <div class="profile-card-title-group">
+                <div class="profile-card-icon profile-card-icon--purple" id="exp-card-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div>
+                  <h2 class="profile-card-title">Experience Level</h2>
+                  <p class="profile-card-subtitle" id="exp-level-label">—</p>
+                </div>
+              </div>
+            </div>
+            <div class="profile-exp-track" aria-label="Experience level track">
+              <div class="profile-exp-step" id="exp-step-beginner" data-level="beginner">
+                <div class="profile-exp-dot"></div>
+                <span>Beginner</span>
+              </div>
+              <div class="profile-exp-line"></div>
+              <div class="profile-exp-step" id="exp-step-intermediate" data-level="intermediate">
+                <div class="profile-exp-dot"></div>
+                <span>Intermediate</span>
+              </div>
+              <div class="profile-exp-line"></div>
+              <div class="profile-exp-step" id="exp-step-expert" data-level="expert">
+                <div class="profile-exp-dot"></div>
+                <span>Expert</span>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /.profile-col-side -->
+      </div><!-- /.profile-content-grid -->
+
+      <!-- ============================================================
+           EDIT PROFILE MODAL OVERLAY
+           ============================================================ -->
+      <div class="profile-modal-overlay" id="profile-modal-overlay" role="dialog" aria-modal="true" aria-label="Edit profile" hidden>
+        <div class="profile-modal" id="profile-modal">
+          <div class="profile-modal-header">
+            <h2 class="profile-modal-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+              Edit Profile
+            </h2>
+            <button type="button" class="profile-modal-close" id="profile-modal-close" aria-label="Close edit profile dialog">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          <div class="auth-alert" id="profile-edit-alert" role="alert"></div>
+
+          <form id="profile-edit-form" novalidate class="profile-edit-form-body">
+            <div class="profile-edit-row">
+              <div class="form-group">
+                <label for="edit-name" class="form-label profile-form-label">Full name</label>
+                <input type="text" id="edit-name" name="name" class="form-input profile-form-input" required autocomplete="name" placeholder="Your full name">
+                <span class="form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="edit-experience" class="form-label profile-form-label">Experience level</label>
+                <select id="edit-experience" name="experience_level" class="form-select profile-form-input" required>
+                  <option value="beginner">🌱 Beginner</option>
+                  <option value="intermediate">⚡ Intermediate</option>
+                  <option value="expert">🚀 Expert</option>
+                </select>
+                <span class="form-error"></span>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="edit-bio" class="form-label profile-form-label">Bio</label>
+              <textarea id="edit-bio" name="bio" class="form-textarea profile-form-input profile-form-textarea" maxlength="500" placeholder="Tell other members about yourself, your background, and what you're excited to teach or learn."></textarea>
+              <div class="profile-char-count-row">
+                <span class="form-error"></span>
+                <span class="profile-char-count"><span id="bio-char-count">0</span>/500</span>
+              </div>
+            </div>
+
+            <div class="profile-modal-actions">
+              <button type="button" class="btn-dash-secondary profile-cancel-btn" id="profile-cancel-edit-btn">Cancel</button>
+              <button type="submit" class="btn-dash-primary profile-save-btn" id="profile-save-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div><!-- /.profile-container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer dash-footer">
+    <div class="container dash-footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach &amp; grow together.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+
+    <div class="container dash-footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>

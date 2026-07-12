@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Availability Management — Skill Swap</title>
+  <meta name="description" content="Manage your mentoring availability. Set your schedule and let learners book sessions at the right time.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/availability.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="avail-body">
+
+  <!-- Background atmosphere -->
+  <div class="avail-orb avail-orb-1" aria-hidden="true"></div>
+  <div class="avail-orb avail-orb-2" aria-hidden="true"></div>
+  <div class="avail-orb avail-orb-3" aria-hidden="true"></div>
+  <div class="avail-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link navbar-link-active">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="availability-main">
+    <div class="container avail-container">
+
+      <!-- ============================================================
+           SECTION 1 — PAGE HERO
+           ============================================================ -->
+      <section class="avail-hero">
+        <div class="avail-hero-left">
+          <div class="avail-badge">
+            <span class="avail-badge-icon">⚡</span>
+            Availability Management
+          </div>
+          <h1 class="avail-headline">Manage Your <span class="avail-headline-gradient">Availability</span></h1>
+          <p class="avail-subtitle">Set your schedule and let learners book sessions at the right time.</p>
+        </div>
+
+        <!-- Quick Stats — populated by JS via IDs -->
+        <div class="avail-hero-stats">
+          <div class="avail-stat-card">
+            <div class="avail-stat-icon avail-stat-icon--purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="avail-stat-body">
+              <div class="avail-stat-value" id="stat-available-slots">—</div>
+              <div class="avail-stat-label">Available Slots</div>
+            </div>
+          </div>
+          <div class="avail-stat-card">
+            <div class="avail-stat-icon avail-stat-icon--green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="avail-stat-body">
+              <div class="avail-stat-value" id="stat-week-sessions">—</div>
+              <div class="avail-stat-label">This Week Sessions</div>
+            </div>
+          </div>
+          <div class="avail-stat-card">
+            <div class="avail-stat-icon avail-stat-icon--amber">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="avail-stat-body">
+              <div class="avail-stat-value" id="stat-booking-rate">—</div>
+              <div class="avail-stat-label">Booking Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           SECTION 2+3 — MAIN CONTENT GRID (Schedule + Add Slot Panel)
+           ============================================================ -->
+      <div class="avail-content-grid">
+
+        <!-- LEFT: Schedule sections -->
+        <div class="avail-col-main">
+
+          <!-- Weekly Schedule Grid -->
+          <section class="avail-glass-card avail-schedule-section">
+            <div class="avail-card-header">
+              <div class="avail-card-title-group">
+                <div class="avail-card-icon avail-card-icon--purple">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div>
+                  <div class="avail-card-title">Weekly Schedule</div>
+                  <div class="avail-card-subtitle">Your availability grid at a glance</div>
+                </div>
+              </div>
+              <div class="avail-week-nav">
+                <button class="avail-week-btn" id="avail-prev-week" aria-label="Previous week">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <span class="avail-week-label" id="avail-week-label">This Week</span>
+                <button class="avail-week-btn" id="avail-next-week" aria-label="Next week">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Weekly grid -->
+            <div class="avail-weekly-grid" id="avail-weekly-grid">
+              <!-- Header row -->
+              <div class="avail-grid-row avail-grid-header">
+                <div class="avail-grid-label-cell"></div>
+                <div class="avail-grid-day-header" data-day="Mon">
+                  <span class="avail-day-abbr">Mon</span>
+                  <span class="avail-day-date" id="grid-date-mon"></span>
+                </div>
+                <div class="avail-grid-day-header" data-day="Tue">
+                  <span class="avail-day-abbr">Tue</span>
+                  <span class="avail-day-date" id="grid-date-tue"></span>
+                </div>
+                <div class="avail-grid-day-header" data-day="Wed">
+                  <span class="avail-day-abbr">Wed</span>
+                  <span class="avail-day-date" id="grid-date-wed"></span>
+                </div>
+                <div class="avail-grid-day-header" data-day="Thu">
+                  <span class="avail-day-abbr">Thu</span>
+                  <span class="avail-day-date" id="grid-date-thu"></span>
+                </div>
+                <div class="avail-grid-day-header" data-day="Fri">
+                  <span class="avail-day-abbr">Fri</span>
+                  <span class="avail-day-date" id="grid-date-fri"></span>
+                </div>
+                <div class="avail-grid-day-header" data-day="Sat">
+                  <span class="avail-day-abbr">Sat</span>
+                  <span class="avail-day-date" id="grid-date-sat"></span>
+                </div>
+                <div class="avail-grid-day-header" data-day="Sun">
+                  <span class="avail-day-abbr">Sun</span>
+                  <span class="avail-day-date" id="grid-date-sun"></span>
+                </div>
+              </div>
+              <!-- Morning row -->
+              <div class="avail-grid-row" data-period="morning">
+                <div class="avail-grid-label-cell">
+                  <span class="avail-period-icon">🌅</span>
+                  <span class="avail-period-label">Morning</span>
+                  <span class="avail-period-time">6–12 AM</span>
+                </div>
+                <div class="avail-grid-cell" data-day="Mon" data-period="morning"></div>
+                <div class="avail-grid-cell" data-day="Tue" data-period="morning"></div>
+                <div class="avail-grid-cell" data-day="Wed" data-period="morning"></div>
+                <div class="avail-grid-cell" data-day="Thu" data-period="morning"></div>
+                <div class="avail-grid-cell" data-day="Fri" data-period="morning"></div>
+                <div class="avail-grid-cell" data-day="Sat" data-period="morning"></div>
+                <div class="avail-grid-cell" data-day="Sun" data-period="morning"></div>
+              </div>
+              <!-- Afternoon row -->
+              <div class="avail-grid-row" data-period="afternoon">
+                <div class="avail-grid-label-cell">
+                  <span class="avail-period-icon">☀️</span>
+                  <span class="avail-period-label">Afternoon</span>
+                  <span class="avail-period-time">12–5 PM</span>
+                </div>
+                <div class="avail-grid-cell" data-day="Mon" data-period="afternoon"></div>
+                <div class="avail-grid-cell" data-day="Tue" data-period="afternoon"></div>
+                <div class="avail-grid-cell" data-day="Wed" data-period="afternoon"></div>
+                <div class="avail-grid-cell" data-day="Thu" data-period="afternoon"></div>
+                <div class="avail-grid-cell" data-day="Fri" data-period="afternoon"></div>
+                <div class="avail-grid-cell" data-day="Sat" data-period="afternoon"></div>
+                <div class="avail-grid-cell" data-day="Sun" data-period="afternoon"></div>
+              </div>
+              <!-- Evening row -->
+              <div class="avail-grid-row" data-period="evening">
+                <div class="avail-grid-label-cell">
+                  <span class="avail-period-icon">🌙</span>
+                  <span class="avail-period-label">Evening</span>
+                  <span class="avail-period-time">5–11 PM</span>
+                </div>
+                <div class="avail-grid-cell" data-day="Mon" data-period="evening"></div>
+                <div class="avail-grid-cell" data-day="Tue" data-period="evening"></div>
+                <div class="avail-grid-cell" data-day="Wed" data-period="evening"></div>
+                <div class="avail-grid-cell" data-day="Thu" data-period="evening"></div>
+                <div class="avail-grid-cell" data-day="Fri" data-period="evening"></div>
+                <div class="avail-grid-cell" data-day="Sat" data-period="evening"></div>
+                <div class="avail-grid-cell" data-day="Sun" data-period="evening"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               SECTION 4 — SLOT LIST (rendered by availability.js)
+               ============================================================ -->
+          <section class="avail-glass-card">
+            <div class="avail-card-header">
+              <div class="avail-card-title-group">
+                <div class="avail-card-icon avail-card-icon--blue">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div>
+                  <div class="avail-card-title">All Availability Slots</div>
+                  <div class="avail-card-subtitle">Manage your open and booked time slots</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert for form feedback (required by availability.js) -->
+            <div class="auth-alert avail-alert" id="availability-form-alert" role="alert"></div>
+
+            <!-- Slot list container (rendered by availability.js) -->
+            <div id="availability-list-container">
+              <!-- Skeleton loaders -->
+              <div class="avail-skeleton-row" aria-hidden="true"></div>
+              <div class="avail-skeleton-row" aria-hidden="true"></div>
+              <div class="avail-skeleton-row" aria-hidden="true"></div>
+            </div>
+
+            <!-- Empty state (toggled by availability.js) -->
+            <div class="avail-empty-state hidden" id="availability-empty-state">
+              <div class="avail-empty-illustration">
+                <svg width="64" height="64" viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="40" r="38" fill="rgba(124,58,237,0.08)" stroke="rgba(124,58,237,0.2)" stroke-width="1.5"/>
+                  <rect x="22" y="18" width="36" height="44" rx="5" fill="rgba(124,58,237,0.12)" stroke="rgba(124,58,237,0.3)" stroke-width="1.5"/>
+                  <path d="M29 30h22M29 38h22M29 46h14" stroke="rgba(167,139,250,0.5)" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="55" cy="55" r="12" fill="rgba(124,58,237,0.2)" stroke="rgba(124,58,237,0.4)" stroke-width="1.5"/>
+                  <path d="M55 50v5l3 3" stroke="rgba(167,139,250,0.9)" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="avail-empty-title">No Availability Added Yet</h3>
+              <p class="avail-empty-body">Create your first availability slot and start receiving bookings from learners.</p>
+              <button type="button" class="avail-empty-cta" onclick="document.getElementById('slot-date').focus()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Create Availability
+              </button>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               SECTION 5 — AVAILABILITY ANALYTICS
+               ============================================================ -->
+          <section class="avail-glass-card avail-analytics-section">
+            <div class="avail-card-header">
+              <div class="avail-card-title-group">
+                <div class="avail-card-icon avail-card-icon--amber">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div>
+                  <div class="avail-card-title">Availability Analytics</div>
+                  <div class="avail-card-subtitle">Your scheduling performance overview</div>
+                </div>
+              </div>
+            </div>
+            <div class="avail-analytics-grid">
+              <div class="avail-analytics-card">
+                <div class="avail-analytics-icon avail-analytics-icon--purple">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="avail-analytics-value" id="analytics-total-hours">0h</div>
+                <div class="avail-analytics-label">Total Available Hours</div>
+              </div>
+              <div class="avail-analytics-card">
+                <div class="avail-analytics-icon avail-analytics-icon--green">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="avail-analytics-value" id="analytics-booked-day">—</div>
+                <div class="avail-analytics-label">Most Booked Day</div>
+              </div>
+              <div class="avail-analytics-card">
+                <div class="avail-analytics-icon avail-analytics-icon--blue">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="avail-analytics-value" id="analytics-completion">0%</div>
+                <div class="avail-analytics-label">Session Completion Rate</div>
+              </div>
+            </div>
+          </section>
+
+        </div><!-- /.avail-col-main -->
+
+        <!-- RIGHT: Add Slot Panel -->
+        <div class="avail-col-side">
+
+          <!-- ============================================================
+               SECTION 3 — ADD SLOT PANEL (existing form – all IDs preserved)
+               ============================================================ -->
+          <section class="avail-glass-card avail-form-panel availability-form-card">
+            <div class="avail-form-header">
+              <div class="avail-card-icon avail-card-icon--purple">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="avail-card-title">Add Availability</div>
+                <div class="avail-card-subtitle">Create a new open time slot</div>
+              </div>
+            </div>
+
+            <form id="availability-form" novalidate class="avail-form">
+
+              <div class="form-group avail-form-group">
+                <label for="slot-date" class="avail-form-label">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  Date
+                </label>
+                <input type="date" id="slot-date" name="slot_date" class="form-input avail-input" required>
+                <span class="form-error"></span>
+              </div>
+
+              <div class="availability-form-row avail-time-row">
+                <div class="form-group avail-form-group">
+                  <label for="slot-start-time" class="avail-form-label">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    Start Time
+                  </label>
+                  <input type="time" id="slot-start-time" name="start_time" class="form-input avail-input" required>
+                  <span class="form-error"></span>
+                </div>
+
+                <div class="form-group avail-form-group">
+                  <label for="slot-end-time" class="avail-form-label">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    End Time
+                  </label>
+                  <input type="time" id="slot-end-time" name="end_time" class="form-input avail-input" required>
+                  <span class="form-error"></span>
+                </div>
+              </div>
+
+              <!-- Session type (UI only — enhances UX without breaking existing backend) -->
+              <div class="avail-session-type">
+                <div class="avail-form-label" style="margin-bottom:0.5rem;">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Session Type
+                </div>
+                <div class="avail-type-pills">
+                  <label class="avail-type-pill">
+                    <input type="radio" name="session_type" value="1on1" checked>
+                    <span>👤 1-on-1</span>
+                  </label>
+                  <label class="avail-type-pill">
+                    <input type="radio" name="session_type" value="group">
+                    <span>👥 Group Session</span>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="avail-submit-btn btn-block" id="availability-add-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Add Slot
+              </button>
+            </form>
+          </section>
+
+          <!-- Quick Tips Card -->
+          <section class="avail-glass-card avail-tips-card">
+            <div class="avail-tips-header">
+              <span class="avail-tips-icon">💡</span>
+              <span class="avail-card-title" style="font-size:0.875rem;">Pro Tips</span>
+            </div>
+            <ul class="avail-tips-list">
+              <li>
+                <span class="avail-tip-dot avail-tip-dot--purple"></span>
+                Add slots at least 24h in advance to get bookings
+              </li>
+              <li>
+                <span class="avail-tip-dot avail-tip-dot--green"></span>
+                Evening slots tend to have higher booking rates
+              </li>
+              <li>
+                <span class="avail-tip-dot avail-tip-dot--amber"></span>
+                Keep a consistent weekly schedule for regulars
+              </li>
+            </ul>
+          </section>
+
+        </div><!-- /.avail-col-side -->
+
+      </div><!-- /.avail-content-grid -->
+
+    </div><!-- /.avail-container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach &amp; grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/availability.js"></script>
+  <script src="assets/js/availability-ui.js"></script>
+</body>
+</html>

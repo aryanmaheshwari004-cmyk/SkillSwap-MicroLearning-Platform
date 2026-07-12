@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews &amp; Ratings — Skill Swap</title>
+  <meta name="description" content="Explore community reviews and ratings. See what learners and mentors say about their skill-swap sessions.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/reviews.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="rv-body">
+
+  <!-- Background atmosphere -->
+  <div class="rv-orb rv-orb-1" aria-hidden="true"></div>
+  <div class="rv-orb rv-orb-2" aria-hidden="true"></div>
+  <div class="rv-orb rv-orb-3" aria-hidden="true"></div>
+  <div class="rv-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="reviews-main">
+    <div class="container rv-container">
+
+      <!-- ============================================================
+           HERO SECTION
+           ============================================================ -->
+      <section class="rv-hero">
+        <div class="rv-hero-left">
+          <div class="rv-eyebrow-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/></svg>
+            Community Reviews
+          </div>
+          <h1 class="rv-headline">What Our Community <span class="rv-headline-gradient">Says</span></h1>
+          <p class="rv-subtitle">Real ratings from real sessions. Verified learners and mentors sharing their experiences.</p>
+        </div>
+
+        <!-- Analytics stats row -->
+        <div class="rv-hero-stats">
+          <div class="rv-stat-card">
+            <div class="rv-stat-icon rv-stat-icon--amber">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="rv-stat-body">
+              <div class="rv-stat-value" id="rv-stat-avg">—</div>
+              <div class="rv-stat-label">Avg Rating</div>
+            </div>
+          </div>
+          <div class="rv-stat-card">
+            <div class="rv-stat-icon rv-stat-icon--purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="rv-stat-body">
+              <div class="rv-stat-value" id="rv-stat-count">—</div>
+              <div class="rv-stat-label">Total Reviews</div>
+            </div>
+          </div>
+          <div class="rv-stat-card">
+            <div class="rv-stat-icon rv-stat-icon--green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 4 12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="rv-stat-body">
+              <div class="rv-stat-value" id="rv-stat-verified">—</div>
+              <div class="rv-stat-label">Verified Sessions</div>
+            </div>
+          </div>
+          <div class="rv-stat-card">
+            <div class="rv-stat-icon rv-stat-icon--blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 22C6.48 22 2 17.52 2 12S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z" stroke="currentColor" stroke-width="2"/><path d="M12 8v4l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="rv-stat-body">
+              <div class="rv-stat-value" id="rv-stat-5star">—</div>
+              <div class="rv-stat-label">5-Star Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           MAIN LAYOUT: Sidebar + Reviews feed
+           ============================================================ -->
+      <div class="rv-layout">
+
+        <!-- ============================================================
+             LEFT SIDEBAR
+             ============================================================ -->
+        <aside class="rv-sidebar">
+
+          <!-- Submission form: shown only if URL has session_id + reviewee_id
+               and the eligibility check passes. Hidden by default. -->
+          <section class="rv-glass-card review-form-card hidden" id="review-form-card">
+            <div class="rv-form-header">
+              <div class="rv-form-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <h3>Leave a Review</h3>
+            </div>
+
+            <div class="review-form-reviewee-row" id="rv-reviewee-row">
+              <img src="assets/images/default-avatar.png" alt="" class="avatar avatar-md" id="review-reviewee-photo">
+              <div>
+                <span class="rv-label-muted">Reviewing</span>
+                <h4 id="review-reviewee-name">Loading...</h4>
+              </div>
+            </div>
+
+            <div class="auth-alert" id="review-form-alert" role="alert"></div>
+
+            <form id="review-form" novalidate>
+              <div class="form-group">
+                <label class="rv-form-label">Your rating</label>
+                <div class="rv-star-input-row" id="star-input-row" role="radiogroup" aria-label="Star rating">
+                  <button type="button" class="star-input-btn" data-value="1" aria-label="1 star">★</button>
+                  <button type="button" class="star-input-btn" data-value="2" aria-label="2 stars">★</button>
+                  <button type="button" class="star-input-btn" data-value="3" aria-label="3 stars">★</button>
+                  <button type="button" class="star-input-btn" data-value="4" aria-label="4 stars">★</button>
+                  <button type="button" class="star-input-btn" data-value="5" aria-label="5 stars">★</button>
+                </div>
+                <p class="star-input-label" id="star-input-label">Tap a star to rate</p>
+                <span class="form-error" id="rating-form-error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="review-comment" class="rv-form-label">Comment <span class="rv-label-optional">(optional)</span></label>
+                <textarea id="review-comment" class="rv-textarea" maxlength="1000" placeholder="Share details about your experience to help others…"></textarea>
+                <span class="form-error"></span>
+              </div>
+
+              <button type="submit" class="rv-submit-btn" id="review-submit-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 2L15 22 11 13 2 9l20-7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Submit Review
+              </button>
+            </form>
+          </section>
+
+          <!-- Ineligible state -->
+          <section class="rv-glass-card rv-ineligible-card review-ineligible-state hidden" id="review-ineligible-state">
+            <div class="rv-ineligible-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M12 8v4M12 16h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 id="ineligible-title">This session can't be reviewed</h3>
+            <p id="ineligible-message">Only completed sessions can be reviewed, and each session can only be reviewed once.</p>
+            <a href="session-history.html" class="rv-link-btn">Back to session history</a>
+          </section>
+
+          <!-- ============================================================
+               RATING ANALYTICS CARD
+               ============================================================ -->
+          <section class="rv-glass-card rv-analytics-card" id="rating-summary-card">
+            <div class="rv-analytics-header">
+              <div class="rv-analytics-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <span class="rv-analytics-title">Rating Analytics</span>
+            </div>
+
+            <!-- Average score hero -->
+            <div class="rv-score-hero">
+              <div class="rv-score-ring">
+                <span class="rating-summary-score rv-score-number" id="rating-summary-score">—</span>
+                <span class="rv-score-out-of">/ 5</span>
+              </div>
+              <div class="rv-score-meta">
+                <div class="star-rating rv-score-stars" id="rating-summary-stars"></div>
+                <span class="rv-score-count" id="rating-summary-count">No reviews yet</span>
+              </div>
+            </div>
+
+            <!-- Distribution chart -->
+            <div class="rv-distribution" id="rating-breakdown-container">
+              <!-- breakdown bars injected by JS -->
+            </div>
+          </section>
+
+          <!-- Quick links -->
+          <div class="rv-glass-card rv-quicklinks-card">
+            <div class="rv-quicklinks-title">Quick Actions</div>
+            <div class="rv-quicklinks">
+              <a href="session-history.html" class="rv-quicklink">
+                <div class="rv-quicklink-icon rv-quicklink-icon--purple">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12z" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="rv-quicklink-text">
+                  <span class="rv-quicklink-title">Session History</span>
+                  <span class="rv-quicklink-sub">Past & completed</span>
+                </div>
+                <svg class="rv-quicklink-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </a>
+              <a href="browse-skills.html" class="rv-quicklink">
+                <div class="rv-quicklink-icon rv-quicklink-icon--green">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="rv-quicklink-text">
+                  <span class="rv-quicklink-title">Browse Mentors</span>
+                  <span class="rv-quicklink-sub">Find new skills</span>
+                </div>
+                <svg class="rv-quicklink-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+        <!-- ============================================================
+             RIGHT COLUMN: Public reviews feed
+             ============================================================ -->
+        <section class="rv-feed-section">
+
+          <!-- Feed header with search + filters -->
+          <div class="rv-feed-header">
+            <div class="rv-feed-title-row">
+              <h2 class="rv-feed-title" id="reviews-list-heading">Reviews</h2>
+              <span class="rv-feed-badge" id="rv-feed-count-badge">All</span>
+            </div>
+
+            <!-- Search + Filter controls -->
+            <div class="rv-controls">
+              <div class="rv-search-wrap">
+                <svg class="rv-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                <input type="search" id="rv-search-input" class="rv-search-input" placeholder="Search reviews…" aria-label="Search reviews">
+              </div>
+              <div class="rv-filter-group">
+                <button class="rv-filter-btn is-active" data-filter="all" id="rv-filter-all">All</button>
+                <button class="rv-filter-btn" data-filter="5" id="rv-filter-5">★ 5</button>
+                <button class="rv-filter-btn" data-filter="4" id="rv-filter-4">★ 4</button>
+                <button class="rv-filter-btn" data-filter="3" id="rv-filter-3">★ 3</button>
+                <button class="rv-filter-btn" data-filter="low" id="rv-filter-low">Low</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reviews list -->
+          <div id="reviews-list-container" class="rv-list-container">
+            <!-- Skeleton loaders -->
+            <div class="rv-skeleton-card" aria-hidden="true">
+              <div class="rv-skeleton rv-sk-avatar"></div>
+              <div class="rv-skeleton-lines">
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w70"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w50"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--full"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w80"></div>
+              </div>
+            </div>
+            <div class="rv-skeleton-card" aria-hidden="true">
+              <div class="rv-skeleton rv-sk-avatar"></div>
+              <div class="rv-skeleton-lines">
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w70"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w50"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--full"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w80"></div>
+              </div>
+            </div>
+            <div class="rv-skeleton-card" aria-hidden="true">
+              <div class="rv-skeleton rv-sk-avatar"></div>
+              <div class="rv-skeleton-lines">
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w70"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w50"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--full"></div>
+                <div class="rv-skeleton rv-sk-line rv-sk-line--w80"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Empty state -->
+          <div class="empty-state rv-empty-state hidden" id="reviews-empty-state">
+            <div class="rv-empty-illustration">
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="38" fill="rgba(251,191,36,0.06)" stroke="rgba(251,191,36,0.18)" stroke-width="1.5"/>
+                <path d="M40 20l4.5 9.1L54 30.6l-7 6.8 1.65 9.6L40 42.5l-8.65 4.5L33 37.4l-7-6.8 9.5-1.5L40 20z" fill="rgba(251,191,36,0.12)" stroke="rgba(251,191,36,0.35)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M26 58h28" stroke="rgba(251,191,36,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M30 63h20" stroke="rgba(251,191,36,0.15)" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="rv-empty-title">No reviews yet</h3>
+            <p class="rv-empty-body">Reviews will appear here once sessions are completed and rated.</p>
+          </div>
+
+        </section>
+
+      </div><!-- /.rv-layout -->
+
+    </div><!-- /.rv-container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach &amp; grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/reviews.js"></script>
+  <script src="assets/js/reviews-ui.js"></script>
+</body>
+</html>

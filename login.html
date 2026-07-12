@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — Skill Swap</title>
+  <meta name="description" content="Log in to Skill Swap to continue teaching and learning.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/auth.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+
+  <div class="auth-page">
+
+    <!-- ============================================================
+         BRAND PANEL (desktop only)
+         ============================================================ -->
+    <aside class="auth-brand-panel">
+      <a href="index.html" class="auth-brand-logo">
+        <img src="assets/images/logo.png" alt="" class="auth-brand-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <div class="auth-brand-content">
+        <h2>Welcome back.</h2>
+        <p>Your sessions, your matches, and your progress are exactly where you left them.</p>
+      </div>
+
+      <div class="auth-brand-quote">
+        <p>&ldquo;Booking a session takes less time than scrolling for a tutorial that might not even answer your question.&rdquo;</p>
+        <p class="auth-brand-quote-author">— Member since 2025</p>
+      </div>
+    </aside>
+
+    <!-- ============================================================
+         FORM PANEL
+         ============================================================ -->
+    <div class="auth-form-panel">
+      <div class="auth-form-wrap">
+
+        <a href="index.html" class="auth-mobile-logo">
+          <img src="assets/images/logo.png" alt="" class="auth-mobile-logo-img">
+          <span>Skill Swap</span>
+        </a>
+
+        <div class="auth-form-header">
+          <h1>Log in to your account</h1>
+          <p>Pick up right where you left off.</p>
+        </div>
+
+        <div class="auth-alert" id="login-alert" role="alert"></div>
+
+        <form id="login-form" class="auth-form" novalidate>
+
+          <div class="form-group">
+            <label for="login-email" class="form-label">Email address</label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              class="form-input"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            >
+            <span class="form-error"></span>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password" class="form-label">Password</label>
+            <div class="auth-password-wrap">
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                class="form-input"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              >
+              <button type="button" class="auth-password-toggle" id="login-password-toggle" aria-label="Show password">Show</button>
+            </div>
+            <span class="form-error"></span>
+          </div>
+
+          <div class="auth-options-row">
+            <label class="auth-checkbox-label" for="login-remember">
+              <input type="checkbox" id="login-remember" name="remember">
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="auth-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg btn-block" id="login-submit-btn">
+            Log in
+          </button>
+        </form>
+
+        <p class="auth-footer-text">
+          Don't have an account? <a href="register.html" class="auth-link">Sign up free</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

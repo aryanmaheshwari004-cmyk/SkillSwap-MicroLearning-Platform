@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Sessions — Skill Swap</title>
+  <meta name="description" content="View and manage your upcoming mentoring sessions. Track, accept, or cancel your scheduled skill-swap bookings.">
+
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/navbar.css">
+  <link rel="stylesheet" href="assets/css/footer.css">
+  <link rel="stylesheet" href="assets/css/sessions.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body class="sess-body">
+
+  <!-- Background atmosphere -->
+  <div class="sess-orb sess-orb-1" aria-hidden="true"></div>
+  <div class="sess-orb sess-orb-2" aria-hidden="true"></div>
+  <div class="sess-orb sess-orb-3" aria-hidden="true"></div>
+  <div class="sess-grid-overlay" aria-hidden="true"></div>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <header class="navbar navbar-dash" id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+        <span>Skill Swap</span>
+      </a>
+
+      <nav class="navbar-links" id="navbar-links">
+        <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+        <a href="dashboard.html" class="navbar-link">Dashboard</a>
+        <a href="upcoming-sessions.html" class="navbar-link navbar-link-active">Sessions</a>
+        <a href="availability.html" class="navbar-link">Availability</a>
+        <a href="my-skills.html" class="navbar-link">My Skills</a>
+      </nav>
+
+      <div class="navbar-actions" id="navbar-actions-guest">
+        <a href="login.html" class="btn btn-ghost btn-sm">Log in</a>
+        <a href="register.html" class="btn btn-primary btn-sm">Get started</a>
+      </div>
+
+      <div class="navbar-actions hidden" id="navbar-actions-auth">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <button type="button" class="navbar-avatar-btn" id="navbar-avatar-btn">
+          <img src="assets/images/default-avatar.png" alt="My profile" class="avatar avatar-sm" id="navbar-avatar-img">
+        </button>
+      </div>
+
+      <button type="button" class="navbar-burger" id="navbar-burger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="navbar-mobile-menu" id="navbar-mobile-menu">
+      <a href="browse-skills.html" class="navbar-link">Browse Skills</a>
+      <a href="dashboard.html" class="navbar-link">Dashboard</a>
+      <a href="upcoming-sessions.html" class="navbar-link">Sessions</a>
+      <a href="availability.html" class="navbar-link">Availability</a>
+      <a href="my-skills.html" class="navbar-link">My Skills</a>
+      <div class="navbar-mobile-divider"></div>
+      <a href="login.html" class="btn btn-outline btn-block hidden" id="navbar-mobile-login">Log in</a>
+      <a href="register.html" class="btn btn-primary btn-block hidden" id="navbar-mobile-register">Get started</a>
+    </div>
+  </header>
+
+  <main class="sessions-main">
+    <div class="container sess-container">
+
+      <!-- ============================================================
+           HERO SECTION
+           ============================================================ -->
+      <section class="sess-hero">
+        <div class="sess-hero-left">
+          <div class="sess-badge">
+            <span class="sess-badge-dot"></span>
+            Session Manager
+          </div>
+          <h1 class="sess-headline">Your <span class="sess-headline-gradient">Sessions</span></h1>
+          <p class="sess-subtitle">Track, manage and join your upcoming mentoring sessions in one place.</p>
+        </div>
+
+        <!-- Stats row -->
+        <div class="sess-hero-stats">
+          <div class="sess-stat-card">
+            <div class="sess-stat-icon sess-stat-icon--purple">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="sess-stat-body">
+              <div class="sess-stat-value" id="stat-upcoming">—</div>
+              <div class="sess-stat-label">Upcoming</div>
+            </div>
+          </div>
+          <div class="sess-stat-card">
+            <div class="sess-stat-icon sess-stat-icon--amber">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="sess-stat-body">
+              <div class="sess-stat-value" id="stat-pending">—</div>
+              <div class="sess-stat-label">Awaiting Action</div>
+            </div>
+          </div>
+          <div class="sess-stat-card">
+            <div class="sess-stat-icon sess-stat-icon--green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M22 4 12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="sess-stat-body">
+              <div class="sess-stat-value" id="stat-accepted">—</div>
+              <div class="sess-stat-label">Confirmed</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           TABS — Upcoming / History  (classes preserved for sessions.css)
+           ============================================================ -->
+      <div class="sess-tabs-wrap">
+        <nav class="sessions-tabs sess-tabs" role="tablist">
+          <a href="upcoming-sessions.html" class="sessions-tab-link sess-tab is-active" role="tab" aria-selected="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Upcoming
+          </a>
+          <a href="session-history.html" class="sessions-tab-link sess-tab" role="tab" aria-selected="false">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12z" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            History
+          </a>
+        </nav>
+
+        <a href="browse-skills.html" class="sess-find-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Find Mentors
+        </a>
+      </div>
+
+      <!-- ============================================================
+           MAIN CONTENT GRID
+           ============================================================ -->
+      <div class="sess-content-grid">
+
+        <!-- LEFT: Session timeline list (populated by upcoming-sessions.js) -->
+        <div class="sess-col-main">
+
+          <!-- List container — ID preserved for upcoming-sessions.js -->
+          <div class="sess-glass-card sess-list-card">
+            <div class="sess-card-header">
+              <div class="sess-card-title-group">
+                <div class="sess-card-icon sess-card-icon--purple">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div>
+                  <div class="sess-card-title">Upcoming Sessions</div>
+                  <div class="sess-card-subtitle">Pending &amp; accepted sessions as learner or mentor</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- The sessions-list ID is used by upcoming-sessions.js DO NOT CHANGE -->
+            <div class="sessions-list sess-list-inner" id="upcoming-sessions-list">
+              <!-- Skeleton loaders while JS loads data -->
+              <div class="sess-skeleton" aria-hidden="true"></div>
+              <div class="sess-skeleton" aria-hidden="true"></div>
+              <div class="sess-skeleton" aria-hidden="true"></div>
+            </div>
+
+            <!-- Empty state — ID preserved for upcoming-sessions.js -->
+            <div class="empty-state sess-empty-state hidden" id="upcoming-empty-state">
+              <div class="sess-empty-illustration">
+                <svg width="72" height="72" viewBox="0 0 80 80" fill="none">
+                  <circle cx="40" cy="40" r="38" fill="rgba(124,58,237,0.07)" stroke="rgba(124,58,237,0.18)" stroke-width="1.5"/>
+                  <rect x="20" y="18" width="40" height="44" rx="6" fill="rgba(124,58,237,0.1)" stroke="rgba(124,58,237,0.28)" stroke-width="1.5"/>
+                  <path d="M29 30h22M29 39h22M29 48h14" stroke="rgba(167,139,250,0.45)" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="28" cy="18" r="4" fill="rgba(124,58,237,0.25)" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+                  <circle cx="52" cy="18" r="4" fill="rgba(124,58,237,0.25)" stroke="rgba(124,58,237,0.5)" stroke-width="1.5"/>
+                  <circle cx="55" cy="56" r="12" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" stroke-width="1.5"/>
+                  <path d="M50 56l3 3 6-6" stroke="rgba(110,231,183,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="sess-empty-title">No Upcoming Sessions</h3>
+              <p class="sess-empty-body">Book a session with a mentor, or wait for a learner to request one of your slots.</p>
+              <a href="browse-skills.html" class="sess-empty-cta">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Browse Mentors
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /.sess-col-main -->
+
+        <!-- RIGHT: Sidebar (Next Session + Quick calendar) -->
+        <div class="sess-col-side">
+
+          <!-- Next Session Spotlight -->
+          <div class="sess-glass-card sess-next-card" id="sess-next-card">
+            <div class="sess-next-header">
+              <div class="sess-next-badge">
+                <span class="sess-next-badge-dot"></span>
+                Next Session
+              </div>
+            </div>
+            <div class="sess-next-body" id="sess-next-body">
+              <!-- populated by sessions-ui.js if a next session exists -->
+              <div class="sess-next-loading">
+                <div class="sess-skeleton sess-skeleton--sm" aria-hidden="true"></div>
+                <div class="sess-skeleton sess-skeleton--sm" style="width:70%" aria-hidden="true"></div>
+              </div>
+            </div>
+            <!-- Countdown -->
+            <div class="sess-countdown" id="sess-countdown" style="display:none">
+              <div class="sess-countdown-label">Starts in</div>
+              <div class="sess-countdown-timer">
+                <div class="sess-countdown-unit">
+                  <span class="sess-countdown-val" id="cd-days">00</span>
+                  <span class="sess-countdown-unit-label">Days</span>
+                </div>
+                <span class="sess-countdown-sep">:</span>
+                <div class="sess-countdown-unit">
+                  <span class="sess-countdown-val" id="cd-hours">00</span>
+                  <span class="sess-countdown-unit-label">Hrs</span>
+                </div>
+                <span class="sess-countdown-sep">:</span>
+                <div class="sess-countdown-unit">
+                  <span class="sess-countdown-val" id="cd-mins">00</span>
+                  <span class="sess-countdown-unit-label">Min</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mini calendar widget -->
+          <div class="sess-glass-card sess-calendar-card">
+            <div class="sess-card-header" style="margin-bottom:1rem">
+              <div class="sess-card-title-group">
+                <div class="sess-card-icon sess-card-icon--blue">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="sess-card-title" style="font-size:0.875rem" id="cal-month-label">July 2026</div>
+              </div>
+              <div class="sess-cal-nav">
+                <button class="sess-cal-btn" id="cal-prev" aria-label="Previous month">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+                <button class="sess-cal-btn" id="cal-next" aria-label="Next month">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Calendar grid rendered by JS -->
+            <div class="sess-cal-grid" id="sess-cal-grid">
+              <!-- Day headers -->
+              <div class="sess-cal-day-head">S</div>
+              <div class="sess-cal-day-head">M</div>
+              <div class="sess-cal-day-head">T</div>
+              <div class="sess-cal-day-head">W</div>
+              <div class="sess-cal-day-head">T</div>
+              <div class="sess-cal-day-head">F</div>
+              <div class="sess-cal-day-head">S</div>
+              <!-- Dates injected by JS -->
+            </div>
+
+            <div class="sess-cal-legend">
+              <span class="sess-cal-legend-dot sess-cal-dot--pending"></span><span>Pending</span>
+              <span class="sess-cal-legend-dot sess-cal-dot--accepted"></span><span>Accepted</span>
+            </div>
+          </div>
+
+          <!-- Quick links card -->
+          <div class="sess-glass-card sess-quicklinks-card">
+            <div class="sess-card-title" style="font-size:0.875rem;margin-bottom:0.875rem">Quick Actions</div>
+            <div class="sess-quicklinks">
+              <a href="availability.html" class="sess-quicklink">
+                <div class="sess-quicklink-icon sess-quicklink-icon--purple">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="sess-quicklink-text">
+                  <span class="sess-quicklink-title">Manage Availability</span>
+                  <span class="sess-quicklink-sub">Set your open slots</span>
+                </div>
+                <svg class="sess-quicklink-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </a>
+              <a href="browse-skills.html" class="sess-quicklink">
+                <div class="sess-quicklink-icon sess-quicklink-icon--green">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/><path d="m21 21-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="sess-quicklink-text">
+                  <span class="sess-quicklink-title">Browse Mentors</span>
+                  <span class="sess-quicklink-sub">Find new skills</span>
+                </div>
+                <svg class="sess-quicklink-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </a>
+              <a href="session-history.html" class="sess-quicklink">
+                <div class="sess-quicklink-icon sess-quicklink-icon--amber">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12z" stroke="currentColor" stroke-width="2"/><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="sess-quicklink-text">
+                  <span class="sess-quicklink-title">Session History</span>
+                  <span class="sess-quicklink-sub">Past &amp; completed</span>
+                </div>
+                <svg class="sess-quicklink-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /.sess-col-side -->
+
+      </div><!-- /.sess-content-grid -->
+
+    </div><!-- /.sess-container -->
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="navbar-logo">
+          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
+          <span>Skill Swap</span>
+        </a>
+        <p class="text-sm text-muted">Learn, teach &amp; grow together.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <a href="browse-skills.html">Browse Skills</a>
+        <a href="index.html#how-it-works">How it Works</a>
+      </div>
+      <div class="footer-col">
+        <h4>Account</h4>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="my-skills.html">My Skills</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/auth-guard.js"></script>
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/upcoming-sessions.js"></script>
+  <script src="assets/js/sessions-ui.js"></script>
+</body>
+</html>

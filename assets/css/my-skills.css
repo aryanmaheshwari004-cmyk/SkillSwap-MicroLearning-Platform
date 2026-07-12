@@ -1,0 +1,984 @@
+/* ==========================================================================
+   Skill Swap — My Skills Page v2
+   Premium dark SaaS: Glassmorphism · Linear · Stripe inspired.
+   All existing JS class/ID hooks are preserved throughout.
+   ========================================================================== */
+
+/* -------------------------------------------------------------------------
+   Body — dark theme
+   ------------------------------------------------------------------------- */
+.ms-body {
+  background-color: #0B0F1A;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+.ms-body ::-webkit-scrollbar { width: 6px; height: 6px; }
+.ms-body ::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); }
+.ms-body ::-webkit-scrollbar-thumb { background: rgba(124,58,237,0.35); border-radius: 999px; }
+.ms-body ::-webkit-scrollbar-thumb:hover { background: rgba(124,58,237,0.6); }
+
+/* -------------------------------------------------------------------------
+   Background orbs + grid
+   ------------------------------------------------------------------------- */
+.ms-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  animation: ms-orb-float 14s ease-in-out infinite;
+}
+.ms-orb-1 {
+  width: 680px; height: 680px;
+  background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
+  top: -200px; left: -180px;
+  animation-delay: 0s;
+}
+.ms-orb-2 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(79,70,229,0.13) 0%, transparent 70%);
+  bottom: 0; right: -120px;
+  animation-delay: -7s;
+}
+.ms-orb-3 {
+  width: 340px; height: 340px;
+  background: radial-gradient(circle, rgba(99,102,241,0.09) 0%, transparent 70%);
+  top: 50%; left: 40%;
+  animation-delay: -12s;
+}
+@keyframes ms-orb-float {
+  0%,100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-28px) scale(1.05); }
+}
+.ms-grid-overlay {
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.017) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.017) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 35% 25%, black 0%, transparent 70%);
+  pointer-events: none; z-index: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Main
+   ------------------------------------------------------------------------- */
+.myskills-main {
+  position: relative;
+  z-index: 1;
+  padding-block: 2.5rem 5rem;
+}
+.ms-container { position: relative; z-index: 1; }
+
+/* -------------------------------------------------------------------------
+   HERO
+   ------------------------------------------------------------------------- */
+.ms-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  animation: ms-fade-up 0.45s ease both;
+}
+
+.ms-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(167,139,250,0.9);
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 999px;
+  padding: 0.3rem 0.875rem;
+  width: fit-content;
+  margin-bottom: 0.875rem;
+  animation: ms-badge-glow 3s ease-in-out infinite alternate;
+}
+@keyframes ms-badge-glow {
+  from { box-shadow: 0 0 8px rgba(124,58,237,0.12); }
+  to   { box-shadow: 0 0 20px rgba(124,58,237,0.32); }
+}
+
+.ms-headline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+.ms-headline-gradient {
+  background: linear-gradient(135deg, #a78bfa 0%, #818cf8 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ms-subtitle {
+  font-size: 1rem;
+  color: rgba(226,232,240,0.5);
+  line-height: 1.6;
+}
+
+/* Add Skill button */
+.ms-add-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 46px;
+  padding-inline: 1.375rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+.ms-add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124,58,237,0.65);
+  background: linear-gradient(135deg, #8b4cf7, #5a52f0);
+}
+.ms-add-btn:active { transform: translateY(0); }
+
+/* -------------------------------------------------------------------------
+   STATS ROW
+   ------------------------------------------------------------------------- */
+.ms-stats-row {
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  animation: ms-fade-up 0.45s ease 0.05s both;
+}
+.ms-stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.375rem 0.875rem;
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid;
+  transition: transform 0.2s ease;
+}
+.ms-stat-pill:hover { transform: translateY(-1px); }
+.ms-stat-pill--purple {
+  background: rgba(124,58,237,0.12); color: #c4b5fd;
+  border-color: rgba(124,58,237,0.28);
+}
+.ms-stat-pill--blue {
+  background: rgba(59,130,246,0.12); color: #93c5fd;
+  border-color: rgba(59,130,246,0.28);
+}
+.ms-stat-pill--green {
+  background: rgba(16,185,129,0.12); color: #6ee7b7;
+  border-color: rgba(16,185,129,0.28);
+}
+
+/* -------------------------------------------------------------------------
+   SEARCH + FILTER TOOLBAR
+   ------------------------------------------------------------------------- */
+.ms-toolbar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+  animation: ms-fade-up 0.45s ease 0.08s both;
+}
+
+/* Search */
+.ms-search-wrap {
+  flex: 1;
+  min-width: 220px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.ms-search-icon {
+  position: absolute;
+  left: 0.875rem;
+  color: rgba(226,232,240,0.3);
+  flex-shrink: 0;
+  pointer-events: none;
+}
+.ms-search-input {
+  width: 100%;
+  height: 42px;
+  padding-left: 2.5rem;
+  padding-right: 2.25rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.ms-search-input::placeholder { color: rgba(226,232,240,0.3); }
+.ms-search-input:focus {
+  outline: none;
+  border-color: rgba(124,58,237,0.55);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
+  background: rgba(255,255,255,0.07);
+}
+.ms-search-clear {
+  position: absolute;
+  right: 0.75rem;
+  width: 20px; height: 20px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(226,232,240,0.5);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.ms-search-clear:hover { background: rgba(239,68,68,0.15); color: #fca5a5; }
+.ms-search-clear.hidden { display: none; }
+
+/* Filter selects */
+.ms-filter-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  color: rgba(226,232,240,0.35);
+}
+.ms-filter-wrap > svg { flex-shrink: 0; pointer-events: none; }
+.ms-filter-select {
+  height: 42px;
+  padding: 0 0.875rem;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 10px;
+  color: rgba(226,232,240,0.75);
+  font-size: 0.8125rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='rgba(226,232,240,0.35)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.625rem center;
+}
+.ms-filter-select:focus {
+  outline: none;
+  border-color: rgba(124,58,237,0.5);
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
+}
+.ms-filter-select option { background: #1a1f35; color: #e2e8f0; }
+
+/* -------------------------------------------------------------------------
+   TABS — classes preserved for my-skills.js
+   ------------------------------------------------------------------------- */
+.ms-tabs {
+  display: flex;
+  gap: 0.375rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 0.3rem;
+  margin-bottom: 1.5rem;
+  width: fit-content;
+  border-bottom: none; /* override base.css */
+  animation: ms-fade-up 0.45s ease 0.1s both;
+}
+.ms-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5625rem 1.125rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(226,232,240,0.5);
+  border: none !important;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.ms-tab:hover { color: rgba(226,232,240,0.85); background: rgba(255,255,255,0.05); }
+.ms-tab.is-active {
+  background: linear-gradient(135deg, rgba(124,58,237,0.3), rgba(99,102,241,0.2));
+  border: 1px solid rgba(124,58,237,0.4) !important;
+  color: #c4b5fd;
+  box-shadow: 0 2px 12px rgba(124,58,237,0.2);
+}
+.ms-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding-inline: 0.35rem;
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  background: rgba(255,255,255,0.08);
+  color: rgba(226,232,240,0.55);
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0;
+}
+.ms-tab.is-active .ms-tab-count {
+  background: rgba(124,58,237,0.25);
+  color: #c4b5fd;
+}
+
+/* Tab panels — display toggled by my-skills.js */
+.ms-tab-panel { display: none; }
+.ms-tab-panel.is-active { display: block; }
+
+/* -------------------------------------------------------------------------
+   SKILLS GRID
+   .myskills-list is used by my-skills.js — we add ms-skills-grid alongside
+   ------------------------------------------------------------------------- */
+.ms-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* -------------------------------------------------------------------------
+   SKILL CARD — .myskills-item-card is created by my-skills.js
+   We restyle it here while preserving the class name.
+   ------------------------------------------------------------------------- */
+.ms-body .myskills-item-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.065) 0%, rgba(255,255,255,0.025) 100%);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-top-color: rgba(255,255,255,0.15);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.28), 0 1px 0 rgba(255,255,255,0.04) inset;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+  animation: ms-card-in 0.35s ease both;
+}
+.ms-body .myskills-item-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+  pointer-events: none;
+}
+.ms-body .myskills-item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(167,139,250,0.18);
+  border-color: rgba(124,58,237,0.28);
+}
+@keyframes ms-card-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Card inner layout */
+.ms-body .myskills-item-info {
+  flex: 1;
+  min-width: 0;
+  padding: 1.25rem 1.25rem 0.875rem;
+}
+.ms-body .myskills-item-info h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.625rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ms-body .myskills-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  margin-top: 0;
+}
+.ms-body .myskills-item-description {
+  font-size: 0.8125rem;
+  color: rgba(226,232,240,0.4);
+  margin-top: 0.625rem;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Badge overrides for dark theme */
+.ms-body .badge-skill {
+  background: rgba(124,58,237,0.15);
+  color: #c4b5fd;
+  border: 1px solid rgba(124,58,237,0.28);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+.ms-body .badge-neutral {
+  background: rgba(255,255,255,0.06);
+  color: rgba(226,232,240,0.55);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+.ms-body .badge-warning {
+  background: rgba(245,158,11,0.12);
+  color: #fcd34d;
+  border: 1px solid rgba(245,158,11,0.25);
+  border-radius: 999px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+}
+
+/* Proficiency badge colour variants (applied via JS badge-neutral + text) */
+.ms-body .badge-prof-beginner  { background: rgba(16,185,129,0.12); color: #6ee7b7; border-color: rgba(16,185,129,0.25); }
+.ms-body .badge-prof-intermediate { background: rgba(59,130,246,0.12); color: #93c5fd; border-color: rgba(59,130,246,0.25); }
+.ms-body .badge-prof-expert    { background: rgba(245,158,11,0.12); color: #fcd34d; border-color: rgba(245,158,11,0.25); }
+
+/* Card action footer */
+.ms-body .myskills-item-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  justify-content: flex-end;
+}
+
+/* Icon buttons */
+.ms-body .myskills-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  height: 34px;
+  padding-inline: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(226,232,240,0.5);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: auto;
+}
+.ms-body .myskills-icon-btn:hover {
+  background: rgba(124,58,237,0.15);
+  border-color: rgba(124,58,237,0.35);
+  color: #c4b5fd;
+  transform: translateY(-1px);
+}
+.ms-body .myskills-icon-btn.is-danger:hover {
+  background: rgba(239,68,68,0.12);
+  border-color: rgba(239,68,68,0.28);
+  color: #fca5a5;
+}
+.ms-body .myskills-icon-btn svg {
+  width: 14px; height: 14px;
+}
+
+/* -------------------------------------------------------------------------
+   SKELETON LOADERS
+   ------------------------------------------------------------------------- */
+.ms-skeleton-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 18px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  min-height: 120px;
+}
+.ms-sk-line {
+  height: 14px;
+  border-radius: 7px;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.04) 25%,
+    rgba(255,255,255,0.08) 37%,
+    rgba(255,255,255,0.04) 63%
+  );
+  background-size: 400% 100%;
+  animation: ms-skeleton 1.6s ease infinite;
+}
+.ms-sk-line--w30 { width: 30%; }
+.ms-sk-line--w40 { width: 40%; }
+.ms-sk-line--w45 { width: 45%; }
+.ms-sk-line--w50 { width: 50%; }
+.ms-sk-line--w60 { width: 60%; }
+.ms-sk-line--w70 { width: 70%; }
+.ms-sk-line--w80 { width: 80%; }
+@keyframes ms-skeleton {
+  0%   { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* -------------------------------------------------------------------------
+   EMPTY STATES
+   ------------------------------------------------------------------------- */
+.ms-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  padding: 4rem 2rem;
+  text-align: center;
+  grid-column: 1 / -1;
+}
+.ms-empty-illustration {
+  margin-bottom: 0.5rem;
+  animation: ms-float 4s ease-in-out infinite;
+}
+@keyframes ms-float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+.ms-empty-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgba(226,232,240,0.8);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.ms-empty-body {
+  font-size: 0.875rem;
+  color: rgba(226,232,240,0.35);
+  max-width: 30ch;
+  line-height: 1.6;
+  margin: 0;
+}
+.ms-empty-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.25), rgba(99,102,241,0.2));
+  border: 1px solid rgba(124,58,237,0.4);
+  color: #c4b5fd;
+  font-size: 0.875rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.2);
+}
+.ms-empty-cta:hover {
+  background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(99,102,241,0.35));
+  border-color: rgba(167,139,250,0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124,58,237,0.35);
+}
+.ms-empty-cta--blue {
+  background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(99,102,241,0.15));
+  border-color: rgba(59,130,246,0.35);
+  color: #93c5fd;
+  box-shadow: 0 4px 20px rgba(59,130,246,0.15);
+}
+.ms-empty-cta--blue:hover {
+  background: linear-gradient(135deg, rgba(59,130,246,0.35), rgba(99,102,241,0.3));
+  border-color: rgba(147,197,253,0.5);
+  box-shadow: 0 8px 28px rgba(59,130,246,0.3);
+}
+
+/* -------------------------------------------------------------------------
+   MODAL OVERLAY
+   .myskills-modal-overlay — display toggled by my-skills.js
+   ------------------------------------------------------------------------- */
+.myskills-modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 900;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.myskills-modal-overlay.is-open {
+  display: flex;
+  animation: ms-overlay-in 0.2s ease;
+}
+@keyframes ms-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* -------------------------------------------------------------------------
+   MODAL PANEL
+   .myskills-modal — class name preserved for my-skills.js
+   ------------------------------------------------------------------------- */
+.ms-modal {
+  background: linear-gradient(145deg, rgba(20,18,40,0.98) 0%, rgba(15,13,35,0.98) 100%);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-top-color: rgba(167,139,250,0.3);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow:
+    0 0 0 1px rgba(124,58,237,0.15),
+    0 32px 80px rgba(0,0,0,0.6),
+    0 8px 32px rgba(0,0,0,0.4);
+  animation: ms-modal-in 0.3s cubic-bezier(0.34,1.2,0.64,1) both;
+  position: relative;
+  padding: 0;
+}
+@keyframes ms-modal-in {
+  from { opacity: 0; transform: scale(0.94) translateY(16px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Gradient top accent bar */
+.ms-modal-topbar {
+  height: 3px;
+  background: linear-gradient(90deg, #7c3aed, #6366f1, #8b5cf6);
+  border-radius: 24px 24px 0 0;
+}
+
+/* Modal header */
+.ms-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 0;
+}
+.ms-modal-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.ms-modal-icon {
+  width: 34px; height: 34px;
+  border-radius: 9px;
+  background: rgba(124,58,237,0.2);
+  border: 1px solid rgba(124,58,237,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c4b5fd;
+  flex-shrink: 0;
+}
+.ms-modal-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.ms-modal-close {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(226,232,240,0.45);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.ms-modal-close:hover {
+  background: rgba(239,68,68,0.12);
+  border-color: rgba(239,68,68,0.25);
+  color: #fca5a5;
+}
+
+/* Modal alert */
+.ms-modal-alert {
+  display: none;
+  margin: 1rem 1.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+}
+.ms-modal-alert.is-visible {
+  display: block;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.25);
+  color: #fca5a5;
+}
+
+/* Modal form */
+.ms-modal-form {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.ms-form-group {
+  margin-bottom: 1.125rem;
+}
+.ms-form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(226,232,240,0.7);
+  margin-bottom: 0.5rem;
+}
+.ms-optional-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(226,232,240,0.3);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  padding: 0.1rem 0.35rem;
+}
+.ms-form-input,
+.ms-form-select,
+.ms-form-textarea {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  border-radius: 10px !important;
+  color: #e2e8f0 !important;
+  font-size: 0.875rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+.ms-form-input { height: 44px !important; }
+.ms-form-select {
+  height: 44px !important;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M6 9l6 6 6-6' stroke='rgba(226,232,240,0.3)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.875rem center !important;
+  padding-right: 2.25rem !important;
+}
+.ms-form-textarea { min-height: 100px !important; padding-block: 0.75rem !important; resize: vertical !important; }
+.ms-form-input::placeholder,
+.ms-form-textarea::placeholder { color: rgba(226,232,240,0.25) !important; }
+.ms-form-input:focus,
+.ms-form-select:focus,
+.ms-form-textarea:focus {
+  outline: none !important;
+  border-color: rgba(124,58,237,0.6) !important;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.12) !important;
+  background: rgba(255,255,255,0.07) !important;
+}
+.ms-form-select option { background: #14122a; color: #e2e8f0; }
+.ms-hidden-select { display: none !important; }
+
+/* Char counter */
+.ms-char-counter {
+  text-align: right;
+  font-size: 0.7rem;
+  color: rgba(226,232,240,0.25);
+  font-family: 'JetBrains Mono', monospace;
+  margin-top: 0.375rem;
+}
+
+/* -------------------------------------------------------------------------
+   PROFICIENCY PILLS (visual only — hidden select drives the value)
+   ------------------------------------------------------------------------- */
+.ms-proficiency-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.ms-prof-pill { display: block; flex: 1; cursor: pointer; }
+.ms-prof-pill input[type="radio"] {
+  position: absolute; opacity: 0; pointer-events: none;
+}
+.ms-prof-pill span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.625rem 0.5rem;
+  border-radius: 10px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(226,232,240,0.5);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.2s ease;
+  text-align: center;
+  white-space: nowrap;
+}
+.ms-prof-pill input:checked + span {
+  background: rgba(124,58,237,0.2);
+  border-color: rgba(124,58,237,0.5);
+  color: #c4b5fd;
+  box-shadow: 0 0 14px rgba(124,58,237,0.18);
+}
+.ms-prof-pill input[value="beginner"]:checked + span  { background: rgba(16,185,129,0.15); border-color: rgba(16,185,129,0.4); color: #6ee7b7; box-shadow: 0 0 14px rgba(16,185,129,0.12); }
+.ms-prof-pill input[value="expert"]:checked + span    { background: rgba(245,158,11,0.15); border-color: rgba(245,158,11,0.4); color: #fcd34d; box-shadow: 0 0 14px rgba(245,158,11,0.12); }
+.ms-prof-pill:hover span { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.14); color: rgba(226,232,240,0.8); }
+
+/* -------------------------------------------------------------------------
+   Offered-only fields — toggled by my-skills.js via is-visible class
+   ------------------------------------------------------------------------- */
+.myskills-offered-only { display: none; flex-direction: column; }
+.myskills-offered-only.is-visible { display: flex; }
+
+/* -------------------------------------------------------------------------
+   MODAL ACTION BUTTONS
+   .myskills-modal-actions — class preserved for my-skills.js layout
+   ------------------------------------------------------------------------- */
+.ms-modal-actions {
+  display: flex;
+  gap: 0.625rem;
+  margin-top: 0.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.ms-save-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  flex: 1;
+  height: 46px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+  letter-spacing: -0.01em;
+}
+.ms-save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(124,58,237,0.65);
+}
+.ms-save-btn:active { transform: translateY(0); }
+.ms-save-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.ms-cancel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding-inline: 1.25rem;
+  border-radius: 11px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(226,232,240,0.6);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.ms-cancel-btn:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.18);
+  color: rgba(226,232,240,0.9);
+}
+
+/* Form error for dark theme */
+.ms-body .form-error { color: #fca5a5; font-size: 0.75rem; }
+.ms-body .form-group.has-error .ms-form-input,
+.ms-body .form-group.has-error .ms-form-select,
+.ms-body .form-group.has-error .ms-form-textarea {
+  border-color: rgba(239,68,68,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(239,68,68,0.1) !important;
+}
+
+/* -------------------------------------------------------------------------
+   NAVBAR + FOOTER dark overrides
+   ------------------------------------------------------------------------- */
+.ms-body .navbar {
+  background: rgba(11,15,26,0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.ms-body .navbar-logo,
+.ms-body .navbar-logo span { color: #ffffff; }
+.ms-body .navbar-link { color: rgba(255,255,255,0.58); }
+.ms-body .navbar-link:hover,
+.ms-body .navbar-link-active { color: #ffffff; }
+
+.ms-body .footer {
+  background: rgba(11,15,26,0.9);
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+.ms-body .footer a { color: rgba(226,232,240,0.5); }
+.ms-body .footer a:hover { color: #ffffff; }
+.ms-body .footer h4 { color: rgba(255,255,255,0.7); }
+
+/* -------------------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .ms-hero { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .ms-skills-grid { grid-template-columns: 1fr; }
+  .ms-toolbar { flex-direction: column; }
+  .ms-search-wrap { min-width: unset; }
+  .ms-filter-wrap { width: 100%; }
+  .ms-filter-select { flex: 1; width: 100%; }
+  .ms-tabs { width: 100%; }
+  .ms-tab { flex: 1; justify-content: center; }
+  .ms-proficiency-pills { flex-direction: column; }
+  .ms-prof-pill { flex: none; }
+  .ms-modal { border-radius: 16px; }
+}
+
+@media (max-width: 480px) {
+  .ms-hero-actions { width: 100%; }
+  .ms-add-btn { width: 100%; justify-content: center; }
+  .ms-stats-row { gap: 0.4rem; }
+  .ms-modal-form { padding: 1rem; }
+  .ms-modal-header { padding: 1.125rem 1rem 0.875rem; }
+}
+
+/* -------------------------------------------------------------------------
+   ANIMATION UTILITIES
+   ------------------------------------------------------------------------- */
+@keyframes ms-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
