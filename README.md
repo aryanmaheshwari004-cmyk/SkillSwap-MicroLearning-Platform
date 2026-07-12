@@ -98,10 +98,6 @@ Below is the directory structure of the prepared project:
 
 ```text
 SkillSwap/
-├── archive/                   # Archive of internal reports, audits, and diagnostics
-│   ├── audits/                # Archived feature completion & navbar audits
-│   ├── diagnostics/           # Archived end-to-end testing script
-│   └── reports/               # Archived auth, project structure & screenshot reports
 ├── assets/                    # Static UI resources
 │   ├── css/                   # Stylesheets for base theme and responsive components
 │   ├── images/                # Theme assets (logo, avatars) & screenshots/
