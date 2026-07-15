@@ -239,14 +239,161 @@
   cursor: not-allowed;
 }
 
-/* Dark navbar variant (dashboard / profile pages) */
-.navbar-dash .navbar-logout-btn {
+/* Dark navbar variant (dashboard / profile / internal pages) */
+.navbar-dash,
+.navbar-browse {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: rgba(10, 10, 20, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.navbar-dash .navbar-logo,
+.navbar-browse .navbar-logo {
+  color: #ffffff;
+}
+
+/* Ensure link text is clearly readable by default (WCAG contrast compliant) */
+.navbar-dash .navbar-link,
+.navbar-browse .navbar-link,
+.sess-body .navbar-link,
+.avail-body .navbar-link,
+.ms-body .navbar-link {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.navbar-dash .navbar-link:hover,
+.navbar-dash .navbar-link-active,
+.navbar-browse .navbar-link:hover,
+.navbar-browse .navbar-link-active,
+.sess-body .navbar-link:hover,
+.sess-body .navbar-link-active,
+.avail-body .navbar-link:hover,
+.avail-body .navbar-link-active,
+.ms-body .navbar-link:hover,
+.ms-body .navbar-link-active {
+  color: #ffffff !important;
+}
+
+.navbar-dash .navbar-link-active::after,
+.navbar-browse .navbar-link-active::after,
+.sess-body .navbar-link-active::after,
+.avail-body .navbar-link-active::after,
+.ms-body .navbar-link-active::after {
+  width: 100% !important;
+}
+
+.navbar-dash .navbar-burger span,
+.navbar-browse .navbar-burger span {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+/* Outlined buttons on dark navbars and dark page bodies (e.g. Dashboard link) */
+.navbar-dash .btn-outline,
+.navbar-browse .btn-outline,
+.navbar-landing .btn-outline,
+.sess-body .navbar .btn-outline,
+.avail-body .navbar .btn-outline,
+.ms-body .navbar .btn-outline {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
+  background-color: transparent !important;
+}
+
+.navbar-dash .btn-outline:hover,
+.navbar-browse .btn-outline:hover,
+.navbar-landing .btn-outline:hover,
+.sess-body .navbar .btn-outline:hover,
+.avail-body .navbar .btn-outline:hover,
+.ms-body .navbar .btn-outline:hover {
+  background-color: #ffffff !important;
+  color: #0a0a0f !important;
+  border-color: #ffffff !important;
+}
+
+/* Ghost buttons on dark navbars and dark page bodies (e.g. Login link) */
+.navbar-dash .btn-ghost,
+.navbar-browse .btn-ghost,
+.navbar-landing .btn-ghost,
+.sess-body .navbar .btn-ghost,
+.avail-body .navbar .btn-ghost,
+.ms-body .navbar .btn-ghost {
+  color: rgba(255, 255, 255, 0.85) !important;
+  background-color: transparent !important;
+}
+
+.navbar-dash .btn-ghost:hover,
+.navbar-browse .btn-ghost:hover,
+.navbar-landing .btn-ghost:hover,
+.sess-body .navbar .btn-ghost:hover,
+.avail-body .navbar .btn-ghost:hover,
+.ms-body .navbar .btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  color: #ffffff !important;
+}
+
+/* Dark mobile menu styling for pages with dark theme navbars / bodies */
+.navbar-dash .navbar-mobile-menu,
+.navbar-browse .navbar-mobile-menu,
+.sess-body .navbar-mobile-menu,
+.avail-body .navbar-mobile-menu,
+.ms-body .navbar-mobile-menu {
+  background: rgba(10, 10, 20, 0.96) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.navbar-dash .navbar-mobile-menu .navbar-link,
+.navbar-browse .navbar-mobile-menu .navbar-link,
+.sess-body .navbar-mobile-menu .navbar-link,
+.avail-body .navbar-mobile-menu .navbar-link,
+.ms-body .navbar-mobile-menu .navbar-link {
+  color: rgba(255, 255, 255, 0.72) !important;
+}
+
+.navbar-dash .navbar-mobile-menu .navbar-link:hover,
+.navbar-dash .navbar-mobile-menu .navbar-link-active,
+.navbar-browse .navbar-mobile-menu .navbar-link:hover,
+.navbar-browse .navbar-mobile-menu .navbar-link-active,
+.sess-body .navbar-mobile-menu .navbar-link:hover,
+.sess-body .navbar-mobile-menu .navbar-link-active,
+.avail-body .navbar-mobile-menu .navbar-link:hover,
+.avail-body .navbar-mobile-menu .navbar-link-active,
+.ms-body .navbar-mobile-menu .navbar-link:hover,
+.ms-body .navbar-mobile-menu .navbar-link-active {
+  color: #ffffff !important;
+}
+
+.navbar-dash .navbar-mobile-menu .navbar-mobile-divider,
+.navbar-browse .navbar-mobile-menu .navbar-mobile-divider,
+.sess-body .navbar-mobile-menu .navbar-mobile-divider,
+.avail-body .navbar-mobile-menu .navbar-mobile-divider,
+.ms-body .navbar-mobile-menu .navbar-mobile-divider {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.navbar-dash .navbar-mobile-menu .btn-outline,
+.navbar-browse .navbar-mobile-menu .btn-outline,
+.sess-body .navbar-mobile-menu .btn-outline,
+.avail-body .navbar-mobile-menu .btn-outline,
+.ms-body .navbar-mobile-menu .btn-outline {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+
+.navbar-dash .navbar-logout-btn,
+.navbar-browse .navbar-logout-btn {
   color: rgba(226, 232, 240, 0.5);
   border-color: rgba(255, 255, 255, 0.10);
   background: transparent;
 }
 
-.navbar-dash .navbar-logout-btn:hover {
+.navbar-dash .navbar-logout-btn:hover,
+.navbar-browse .navbar-logout-btn:hover {
   background: rgba(239, 68, 68, 0.12);
   border-color: rgba(239, 68, 68, 0.35);
   color: #fca5a5;

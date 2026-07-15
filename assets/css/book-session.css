@@ -4,13 +4,78 @@
    Built on design tokens from base.css.
    ========================================================================== */
 
+.booksession-body {
+  background-color: #0B0F1A;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background atmosphere orbs */
+.booksession-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(110px);
+  pointer-events: none;
+  z-index: 0;
+  animation: booksession-orb-float 15s ease-in-out infinite;
+}
+
+.booksession-orb-1 {
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.18) 0%, transparent 70%);
+  top: -200px;
+  left: -180px;
+  animation-delay: 0s;
+}
+
+.booksession-orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(79, 70, 229, 0.13) 0%, transparent 70%);
+  bottom: 0;
+  right: -120px;
+  animation-delay: -7s;
+}
+
+.booksession-orb-3 {
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+  top: 55%;
+  left: 45%;
+  animation-delay: -12s;
+}
+
+@keyframes booksession-orb-float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-28px) scale(1.05); }
+}
+
+.booksession-grid-overlay {
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 35% 25%, black 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .booksession-main {
+  position: relative;
+  z-index: 1;
   padding-block: var(--space-7) var(--space-10);
 }
 
 .booksession-wrap {
   max-width: 560px;
   margin-inline: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .booksession-header {
@@ -18,14 +83,33 @@
   margin-bottom: var(--space-6);
 }
 
-.booksession-header p {
-  color: var(--color-ink-500);
+.booksession-header h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(1.8rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.625rem;
 }
 
-/* --------------------------------------------------------------------
-   Summary card
-   -------------------------------------------------------------------- */
-.booksession-summary-card {
+.booksession-header p {
+  color: rgba(226, 232, 240, 0.5);
+  font-size: 1.0rem;
+}
+
+/* Glassmorphic card styling matching the dark SaaS design system */
+.booksession-body .card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.065) 0%, rgba(255, 255, 255, 0.025) 100%);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-top-color: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  padding: var(--space-5);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,0.04) inset,
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+  color: #e2e8f0;
   margin-bottom: var(--space-5);
 }
 
@@ -35,12 +119,13 @@
   gap: var(--space-3);
   padding-bottom: var(--space-4);
   margin-bottom: var(--space-4);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .booksession-mentor-row h4 {
   font-size: var(--fs-base);
   margin-bottom: 2px;
+  color: #ffffff;
 }
 
 .booksession-detail-row {
@@ -52,21 +137,43 @@
 }
 
 .booksession-detail-label {
-  color: var(--color-ink-500);
+  color: rgba(226, 232, 240, 0.5);
 }
 
 .booksession-detail-value {
   font-weight: 600;
-  color: var(--color-ink-900);
+  color: #ffffff;
   text-align: right;
 }
 
-/* --------------------------------------------------------------------
-   Notes form
-   -------------------------------------------------------------------- */
+/* Notes form */
 .booksession-form-card h3 {
   font-size: var(--fs-md);
   margin-bottom: var(--space-4);
+  color: #ffffff;
+}
+
+.booksession-form-card .form-label {
+  color: rgba(226, 232, 240, 0.7);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.booksession-body .form-textarea {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+  color: #e2e8f0 !important;
+  font-size: 0.875rem !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease !important;
+}
+
+.booksession-body .form-textarea:focus {
+  outline: none !important;
+  border-color: rgba(124, 58, 237, 0.6) !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.12) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
 }
 
 .booksession-submit-row {
@@ -75,9 +182,49 @@
   margin-top: var(--space-2);
 }
 
-/* --------------------------------------------------------------------
-   Slot unavailable state
-   -------------------------------------------------------------------- */
+/* Premium purple buttons matching dashboard */
+.booksession-body .btn-primary {
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.35);
+  border-radius: 10px;
+  font-weight: 700;
+  height: 44px;
+  transition: all 0.25s ease;
+}
+
+.booksession-body .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.55);
+}
+
+.booksession-body .btn-primary:active {
+  transform: translateY(0);
+}
+
+.booksession-body .btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  padding-inline: var(--space-5);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(226, 232, 240, 0.9);
+  font-weight: 600;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(8px);
+}
+
+.booksession-body .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.11);
+  border-color: rgba(167, 139, 250, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Slot unavailable state */
 .booksession-unavailable {
   text-align: center;
   padding: var(--space-7) var(--space-5);
@@ -85,9 +232,10 @@
 
 .booksession-unavailable h3 {
   margin-bottom: var(--space-2);
+  color: #ffffff;
 }
 
 .booksession-unavailable p {
-  color: var(--color-ink-500);
+  color: rgba(226, 232, 240, 0.5);
   margin-bottom: var(--space-5);
 }

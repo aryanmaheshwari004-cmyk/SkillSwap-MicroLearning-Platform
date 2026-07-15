@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book a Session — Skill Swap</title>
+  <title>Book a Session — SkillSwap</title>
   <meta name="description" content="Confirm your session booking with your chosen mentor.">
 
   <link rel="icon" type="image/png" href="assets/images/logo.png">
@@ -16,16 +16,22 @@
   <link rel="stylesheet" href="assets/css/book-session.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
-<body>
+<body class="booksession-body">
+
+  <!-- Background atmosphere -->
+  <div class="booksession-orb booksession-orb-1" aria-hidden="true"></div>
+  <div class="booksession-orb booksession-orb-2" aria-hidden="true"></div>
+  <div class="booksession-orb booksession-orb-3" aria-hidden="true"></div>
+  <div class="booksession-grid-overlay" aria-hidden="true"></div>
 
   <!-- ============================================================
        NAVBAR
        ============================================================ -->
-  <header class="navbar" id="navbar">
+  <header class="navbar navbar-dash" id="navbar">
     <div class="container navbar-inner">
       <a href="index.html" class="navbar-logo">
-        <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
-        <span>Skill Swap</span>
+        <img src="assets/images/logo.png" alt="SkillSwap logo" class="navbar-logo-img">
+        <span>SkillSwap</span>
       </a>
 
       <nav class="navbar-links" id="navbar-links">
@@ -68,12 +74,11 @@
   <main class="booksession-main">
     <div class="container booksession-wrap">
 
-      <div class="booksession-header">
-        <h1>Confirm your session</h1>
-        <p>Review the details below before sending your request.</p>
-      </div>
-
       <div id="booksession-content">
+        <div class="booksession-header">
+          <h1>Confirm your session</h1>
+          <p>Review the details below before sending your request.</p>
+        </div>
         <!-- ============================================================
              SUMMARY CARD
              ============================================================ -->
@@ -137,8 +142,8 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a href="index.html" class="navbar-logo">
-          <img src="assets/images/logo.png" alt="Skill Swap logo" class="navbar-logo-img">
-          <span>Skill Swap</span>
+          <img src="assets/images/logo.png" alt="SkillSwap logo" class="navbar-logo-img">
+          <span>SkillSwap</span>
         </a>
         <p class="text-sm text-muted">Learn, teach & grow together.</p>
       </div>
@@ -159,7 +164,7 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <p class="text-sm text-muted">&copy; 2026 Skill Swap. All rights reserved.</p>
+      <p class="text-sm text-muted">&copy; 2026 SkillSwap. All rights reserved.</p>
     </div>
   </footer>
 
@@ -172,3 +177,4 @@
   <script src="assets/js/book-session.js"></script>
 </body>
 </html>
+
